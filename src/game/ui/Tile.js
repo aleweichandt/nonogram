@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-type PropsType = {
+export type PropsType = {
   Option: React$ComponentType<*>,
 }
 

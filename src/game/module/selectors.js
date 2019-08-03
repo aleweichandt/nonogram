@@ -1,6 +1,8 @@
+// @flow
 import { createSelector } from 'reselect';
+import type { StateType, StateWithGameType } from './types';
 
-const gameSelector = ({ game }) => game;
+const gameSelector = ({ game }: StateWithGameType): StateType => game;
 
 export const getBoard = createSelector(
   gameSelector,

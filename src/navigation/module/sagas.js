@@ -1,3 +1,5 @@
+// @flow
+import type { Saga } from 'redux-saga';
 import { select, call, takeEvery } from 'redux-saga/effects';
 import {
   INIT, NAVIGATE, SET_PARAMS, BACK,
@@ -12,14 +14,14 @@ const NavigationActions = [
   // OPEN_DRAWER, CLOSE_DRAWER, TOGGLE_DRAWER,
 ];
 
-function* execNavigationAction(action) {
+function* execNavigationAction(action): Saga<void> {
   const dispatch = yield select(getDispatcher);
   if (dispatch) {
     yield call(dispatch, action);
   }
 }
 
-function* watchNavigationActions() {
+function* watchNavigationActions(): Saga<void> {
   yield takeEvery(NavigationActions, execNavigationAction);
 }
 

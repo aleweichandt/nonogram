@@ -1,16 +1,21 @@
+// @flow
+import { createReducer } from '../../redux-helpers';
 import { INIT_GAME, SET_OPTION, SET_TILE } from './actions';
 import { DEFAULT_OPTIONS, OPTION_BLACK } from '../const';
 import { clearBoard, updateBoard } from './utils';
+import type { StateType } from './types';
 
-
-export const initialState = {
+export const initialState: StateType = {
   board: [[]],
   currentOption: OPTION_BLACK,
   options: DEFAULT_OPTIONS,
   progress: [[]],
 };
 
-const onInitGame = (state, { payload: { board, options, currentOption } }) => ({
+const onInitGame = (
+  state: StateType,
+  { payload: { board, options, currentOption } },
+): StateType => ({
   ...state,
   board,
   currentOption,
@@ -18,25 +23,26 @@ const onInitGame = (state, { payload: { board, options, currentOption } }) => ({
   progress: clearBoard(board),
 });
 
-const onSetOption = (state, { payload: { option } }) => ({
+const onSetOption = (
+  state: StateType,
+  { payload: { option } },
+): StateType => ({
   ...state,
   currentOption: option,
 });
 
-const onSetTile = (state, { payload: { row, col } }) => ({
+const onSetTile = (
+  state: StateType,
+  { payload: { row, col } },
+): StateType => ({
   ...state,
   progress: updateBoard(state.progress, row, col, state.currentOption),
 });
 
-const actionHandlers = {
+const handlers = {
   [INIT_GAME]: onInitGame,
   [SET_TILE]: onSetTile,
   [SET_OPTION]: onSetOption,
 };
 
-const reducer = (state = initialState, { type = '', ...action }) => {
-  const { [type]: handler = t => t } = actionHandlers;
-  return handler(state, action);
-};
-
-export default reducer;
+export default createReducer<StateType, $Keys<typeof handlers>>(handlers, initialState);

@@ -1,3 +1,5 @@
+// @flow
+import type { Saga } from 'redux-saga';
 import { takeEvery, put, select } from 'redux-saga/effects';
 import {
   SET_TILE, CHECK_STATE, checkState, endGame,
@@ -5,7 +7,7 @@ import {
 import { getBoard, getProgress } from './selectors';
 import { validateBoard } from './utils';
 
-export function* onCheckState() {
+export function* onCheckState(): Saga<void> {
   const board = yield select(getBoard);
   const progress = yield select(getProgress);
   const solved = validateBoard(board, progress);
@@ -14,15 +16,15 @@ export function* onCheckState() {
   }
 }
 
-export function* onSetTile() {
+export function* onSetTile(): Saga<void> {
   yield put(checkState());
 }
 
-export function* watchSetTile() {
+export function* watchSetTile(): Saga<void> {
   yield takeEvery(SET_TILE, onSetTile);
 }
 
-export function* watchCheckState() {
+export function* watchCheckState(): Saga<void> {
   yield takeEvery(CHECK_STATE, onCheckState);
 }
 

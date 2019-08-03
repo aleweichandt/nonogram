@@ -1,5 +1,7 @@
+// @flow
 import game from './reducer';
 
+export * from './types';
 export * from './actions';
 export * from './selectors';
 export const reducer = { game };

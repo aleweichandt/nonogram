@@ -5,7 +5,7 @@ import NavigatorRouter from './root';
 
 // $FlowFixMe react-navigation types
 const AppContainer = createAppContainer(NavigatorRouter);
-type PropsType = {
+export type PropsType = {
   setRef: () => void,
 }
 export default ({ setRef }: PropsType) => (<AppContainer ref={setRef} />);

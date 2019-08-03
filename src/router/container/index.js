@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux';
 import AppContainer from '../ui';
 import { setNavigation } from '../../navigation/module';

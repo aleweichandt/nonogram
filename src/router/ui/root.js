@@ -1,3 +1,4 @@
+// @flow
 import { createStackNavigator } from 'react-navigation';
 import { SPLASH, MENU } from '../../routes';
 import SplashScreen from '../../splash';

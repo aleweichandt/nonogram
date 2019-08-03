@@ -1,4 +1,7 @@
+// @flow
 import { NavigationActions, StackActions } from 'react-navigation';
+import type { NavigationProp } from 'react-navigation';
+import type { ActionWithPayload } from '../../redux-helpers';
 
 export const {
   BACK, SET_PARAMS, NAVIGATE, INIT,
@@ -13,9 +16,11 @@ export const {
 //   openDrawer, closeDrawer, toggleDrawer,
 // } = DrawerActions;
 
-export const SET_NAVIGATION = 'NAVIGATION/SET_NAVIGATION';
+export const SET_NAVIGATION: 'NAVIGATION/SET_NAVIGATION' = 'NAVIGATION/SET_NAVIGATION';
+export type SetNavigationAction = ActionWithPayload<typeof SET_NAVIGATION, NavigationProp<*>>;
+export type ActionType = typeof SET_NAVIGATION;
 
-export const setNavigation = payload => ({
+export const setNavigation = (payload: NavigationProp<*>): SetNavigationAction => ({
   type: SET_NAVIGATION,
   payload,
 });
