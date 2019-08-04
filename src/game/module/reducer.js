@@ -26,10 +26,10 @@ const onInitGame = (
 const onSetOption = (
   state: StateType,
   { payload: { option } },
-): StateType => ({
+): StateType => (state.options.includes(option) ? ({
   ...state,
   currentOption: option,
-});
+}) : state);
 
 const onSetTile = (
   state: StateType,

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game actions test suite check state 1`] = `
+Object {
+  "type": "game/CHECK_STATE",
+}
+`;
+
+exports[`game actions test suite end game 1`] = `
+Object {
+  "type": "game/END_GAME",
+}
+`;
+
+exports[`game actions test suite init game default params 1`] = `
+Object {
+  "payload": Object {
+    "board": Array [
+      Array [],
+    ],
+    "currentOption": "game/OPTION_BLACK",
+    "options": Array [
+      "game/OPTION_VOID",
+      "game/OPTION_BLOCKED",
+      "game/OPTION_BLACK",
+    ],
+  },
+  "type": "game/INIT_GAME",
+}
+`;
+
+exports[`game actions test suite init game with params 1`] = `
+Object {
+  "payload": Object {
+    "board": Array [
+      Array [
+        "game/OPTION_BLACK",
+        "game/OPTION_VOID",
+      ],
+      Array [
+        "game/OPTION_VOID",
+        "game/OPTION_BLACK",
+      ],
+    ],
+    "currentOption": "game/OPTION_VOID",
+    "options": Array [
+      "game/OPTION_BLACK",
+      "game/OPTION_VOID",
+    ],
+  },
+  "type": "game/INIT_GAME",
+}
+`;
+
+exports[`game actions test suite set option default params 1`] = `
+Object {
+  "payload": Object {
+    "option": "game/OPTION_VOID",
+  },
+  "type": "game/SET_OPTION",
+}
+`;
+
+exports[`game actions test suite set option with params 1`] = `
+Object {
+  "payload": Object {
+    "option": "game/OPTION_BLACK",
+  },
+  "type": "game/SET_OPTION",
+}
+`;
+
+exports[`game actions test suite set tile default params 1`] = `
+Object {
+  "payload": Object {
+    "col": 0,
+    "row": 0,
+  },
+  "type": "game/SET_TILE",
+}
+`;
+
+exports[`game actions test suite set tile with params 1`] = `
+Object {
+  "payload": Object {
+    "col": 1,
+    "row": 1,
+  },
+  "type": "game/SET_TILE",
+}
+`;
