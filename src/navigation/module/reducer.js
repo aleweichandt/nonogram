@@ -21,4 +21,4 @@ const handlers = Object.freeze({
   [SET_NAVIGATION]: handleSetNavigation,
 });
 
-export default createReducer<StateType, $Keys<typeof handlers>>(handlers, initialState);
+export default createReducer<StateType>(handlers, initialState);

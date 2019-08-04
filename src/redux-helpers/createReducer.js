@@ -1,19 +1,16 @@
 // @flow
-import type { Action } from 'redux';
+type Reducer<State> = (State, *) => State
+type HandlersType<State, Types> = {[Types]: Reducer<State> };
+type HandlerType<State> = HandlersType<State, *>;
 
-// use custom
-type Reducer<S, A> = (S, A) => S;
-
-type HandlersType<State, Actions> = {[Actions]: Reducer<State, Action<Actions> & {[string]: *}> };
-
-function createReducer<State, Actions>(
-  handlers: HandlersType<State, Actions>,
+function createReducer<State>(
+  handlers: HandlerType<State>,
   initialState: State,
-): Reducer<State, Action<Actions>> {
+): Reducer<State> {
   // eslint-disable-next-line no-unused-vars
-  const identity: Reducer<State, Action<Actions>> = (state, action) => state;
+  const identity = (state: State, action: *): State => state;
 
-  return (state: State = initialState, action: Action<Actions>): State => {
+  return (state = initialState, action) => {
     const { [action.type]: handle = identity } = handlers;
     return handle(state, action);
   };

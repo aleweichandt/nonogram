@@ -17,7 +17,6 @@ describe('game reducer test suite', () => {
   });
   it('initialise game', () => {
     const action = initGame(testBoard, testOptions, V);
-    // $FlowFixMe FIX
     expect(reducer(initialState, action)).toEqual({
       ...initialState,
       board: testBoard,
@@ -34,7 +33,6 @@ describe('game reducer test suite', () => {
         currentOption: V,
         options: [V, B],
       };
-      // $FlowFixMe FIX
       expect(reducer(state, action)).toEqual({
         ...state,
         currentOption: B,
@@ -47,14 +45,12 @@ describe('game reducer test suite', () => {
         currentOption: V,
         options: [V],
       };
-      // $FlowFixMe FIX
       expect(reducer(state, action)).toEqual(state);
     });
   });
   describe('set tile', () => {
     const action = setTile(1, 1);
     it('without board', () => {
-      // $FlowFixMe FIX
       expect(reducer(initialState, action)).toEqual(initialState);
     });
     it('with board and same option', () => {
@@ -64,7 +60,6 @@ describe('game reducer test suite', () => {
         currentOption: V,
         progress: cleanProgress,
       };
-      // $FlowFixMe FIX
       expect(reducer(state, action)).toEqual(state);
     });
     it('with board and diff option', () => {
@@ -74,7 +69,6 @@ describe('game reducer test suite', () => {
         currentOption: B,
         progress: cleanProgress,
       };
-      // $FlowFixMe FIX
       expect(reducer(state, action)).toEqual({
         ...state,
         progress: [[V, V], [V, B]],

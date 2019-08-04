@@ -1,5 +1,3 @@
 // @flow
-import type { Action } from 'redux';
-
-export type ActionWithPayload<A, P> = Action<A> & { payload: P };
-export type ActionWithoutPayload<A> = Action<A>;
+export type ActionWithoutPayload<A> = { type: A };
+export type ActionWithPayload<A, P> = ActionWithoutPayload<A> & { payload: P };

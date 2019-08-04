@@ -39,10 +39,10 @@ const onSetTile = (
   progress: updateBoard(state.progress, col, row, state.currentOption),
 });
 
-const handlers = {
+const handlers = Object.freeze({
   [INIT_GAME]: onInitGame,
   [SET_TILE]: onSetTile,
   [SET_OPTION]: onSetOption,
-};
+});
 
-export default createReducer<StateType, $Keys<typeof handlers>>(handlers, initialState);
+export default createReducer<StateType>(handlers, initialState);
