@@ -1,13 +1,14 @@
 // @flow
 import { createStackNavigator } from 'react-navigation';
-import { SPLASH, MENU } from '../../routes';
+import { SPLASH, GAME } from '../../routes';
 import SplashScreen from '../../splash';
+import GameScreen from '../../game-scene';
 
 export default createStackNavigator({
   [SPLASH]: {
     screen: SplashScreen,
   },
-  [MENU]: {
-    screen: SplashScreen,
+  [GAME]: {
+    screen: GameScreen,
   },
 });

@@ -33,10 +33,10 @@ const onSetOption = (
 
 const onSetTile = (
   state: StateType,
-  { payload: { row, col } },
+  { payload: { col, row } },
 ): StateType => ({
   ...state,
-  progress: updateBoard(state.progress, row, col, state.currentOption),
+  progress: updateBoard(state.progress, col, row, state.currentOption),
 });
 
 const handlers = {

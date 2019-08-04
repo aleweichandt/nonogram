@@ -1,29 +1,34 @@
 // @flow
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
 } from 'react-native';
+import UIOption, { type PropsType as OptionPropsType } from './Option';
+import type { OptionType } from '../types';
 
 const styles = StyleSheet.create({
   container: {
+    width: 30,
+    height: 30,
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'grey',
   },
 });
 
 export type PropsType = {
-  Option: React$ComponentType<*>,
+  value: OptionType,
+  Option?: React$ComponentType<OptionPropsType>,
 }
 
-class Tile extends PureComponent<PropsType> {
-  render() {
-    const { Option = Text } = this.props;
-    return (
-      <View style={styles.container}>
-        <Option />
-      </View>
-    );
-  }
-}
+const Tile = ({ value, Option = UIOption }: PropsType) => (
+  <View style={styles.container}>
+    <Option>{value}</Option>
+  </View>
+);
+Tile.defaultProps = {
+  Option: UIOption,
+};
 
 export default Tile;

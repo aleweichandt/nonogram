@@ -46,7 +46,7 @@ export const setOption = (option?: OptionType = OPTION_VOID): SetOptionAction =>
   },
 });
 
-export const setTile = (row?: number = 0, col?: number = 0): SetTyleAction => ({
+export const setTile = (col?: number = 0, row?: number = 0): SetTyleAction => ({
   type: SET_TILE,
   payload: {
     row,
