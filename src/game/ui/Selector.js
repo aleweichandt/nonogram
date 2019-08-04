@@ -3,6 +3,7 @@ import React from 'react';
 import {
   View,
 } from 'native-base';
+import { connectStyle } from '../../theme';
 import UITile, { type PropsType as TileType } from './Tile';
 import type { OptionsType, OptionType } from '../types';
 
@@ -12,21 +13,20 @@ export type PropsType = {
 }
 
 const styles = {
-  container: {
+  'NativeBase.ViewNB': {
     flexDirection: 'row',
-    justifyContent: 'space-around',
   },
 };
 
-const Selection = ({ options, Tile = UITile }: PropsType) => (
-  <View style={styles.container}>
+const Selector = ({ options, Tile = UITile }: PropsType) => (
+  <View padder>
     {options.map((item: OptionType) => (
       <Tile value={item} />
     ))}
   </View>
 );
-Selection.defaultProps = {
+Selector.defaultProps = {
   Tile: UITile,
 };
 
-export default Selection;
+export default connectStyle('Game.Selector', styles)(Selector);

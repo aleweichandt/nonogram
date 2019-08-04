@@ -12,7 +12,7 @@ const Splash = ({ next }: PropsType) => (
   <Container>
     <Content padder>
       <Button onPress={next}>
-        <Text>NEXT</Text>
+        <Text>START</Text>
       </Button>
     </Content>
   </Container>

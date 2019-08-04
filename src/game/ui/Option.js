@@ -4,40 +4,36 @@ import {
   View,
   Text,
 } from 'native-base';
-import { OPTION_BLACK, OPTION_BLOCKED, OPTION_VOID } from '../const';
+import { connectStyle } from '../../theme';
+import { OPTION_BLACK, OPTION_BLOCKED } from '../const';
 import type { OptionType } from '../types';
 
 export type PropsType = {
   children: OptionType,
 }
 
-const colorMappings = {
-  [OPTION_BLACK]: 'black',
-  [OPTION_BLOCKED]: 'white',
-  [OPTION_VOID]: 'white',
-};
-
 const styles = {
-  container: {
+  'NativeBase.ViewNB': {
     width: '100%',
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  block: {
-    textAlign: 'center',
+    backgroundColor: 'white',
+    '.black': {
+      backgroundColor: 'darkgrey',
+    },
+    'NativeBase.Text': {
+      textAlign: 'center',
+    },
   },
 };
 
-const BaseOption = ({ children }: PropsType) => {
-  const backgroundColor = colorMappings[children] || 'white';
-  return (
-    <View style={[styles.container, { backgroundColor }]}>
-      {OPTION_BLOCKED === children ? (
-        <Text style={styles.block}>X</Text>
-      ) : null}
-    </View>
-  );
-};
+const BaseOption = ({ children }: PropsType) => (
+  <View black={OPTION_BLACK === children}>
+    {OPTION_BLOCKED === children ? (
+      <Text>X</Text>
+    ) : null}
+  </View>
+);
 
-export default BaseOption;
+export default connectStyle('Game.Option', styles)(BaseOption);

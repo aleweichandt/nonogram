@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import { Selection } from '../ui';
+import { Selector } from '../ui';
 import { getOptions } from '../module';
 import SelectorTile from './SelectorTile';
 
@@ -9,4 +9,4 @@ const mapStateToProps = (state: *) => ({
   Tile: SelectorTile,
 });
 
-export default connect(mapStateToProps, undefined)(Selection);
+export default connect(mapStateToProps, undefined)(Selector);
