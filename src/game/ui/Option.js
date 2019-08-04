@@ -3,8 +3,7 @@ import React from 'react';
 import {
   View,
   Text,
-  StyleSheet,
-} from 'react-native';
+} from 'native-base';
 import { OPTION_BLACK, OPTION_BLOCKED, OPTION_VOID } from '../const';
 import type { OptionType } from '../types';
 
@@ -18,7 +17,7 @@ const colorMappings = {
   [OPTION_VOID]: 'white',
 };
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     width: '100%',
     height: '100%',
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
   block: {
     textAlign: 'center',
   },
-});
+};
 
 const BaseOption = ({ children }: PropsType) => {
   const backgroundColor = colorMappings[children] || 'white';

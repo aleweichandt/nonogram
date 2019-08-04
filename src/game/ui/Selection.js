@@ -2,8 +2,7 @@
 import React from 'react';
 import {
   View,
-  StyleSheet,
-} from 'react-native';
+} from 'native-base';
 import UITile, { type PropsType as TileType } from './Tile';
 import type { OptionsType, OptionType } from '../types';
 
@@ -12,13 +11,12 @@ export type PropsType = {
   Tile?: React$ComponentType<TileType>,
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: 'red', // TEST
   },
-});
+};
 
 const Selection = ({ options, Tile = UITile }: PropsType) => (
   <View style={styles.container}>

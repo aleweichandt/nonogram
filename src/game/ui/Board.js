@@ -1,9 +1,8 @@
 // @flow
 import React from 'react';
 import {
-  View,
-  StyleSheet,
-} from 'react-native';
+  Grid, Col, Row,
+} from 'native-base';
 import UITile, { type PropsType as TileType } from './Tile';
 import type { BoardType, OptionType } from '../types';
 
@@ -12,29 +11,18 @@ export type PropsType = {
   Tile?: React$ComponentType<TileType>,
 }
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    backgroundColor: 'blue', // TEST
-  },
-  col: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-});
-
 const Board = ({ board, Tile = UITile }: PropsType) => (
-  <View style={styles.container}>
-    {board.map((col: OptionType[], column: number) => (
-      <View style={styles.col}>
-        {col.map((item: OptionType, row: number) => (
-          <Tile value={item} column={column} row={row} />
-        ))}
-      </View>
-    ))}
-  </View>
+  <Grid>
+    <Col>
+      {board.map((col: OptionType[], column: number) => (
+        <Row>
+          {col.map((item: OptionType, row: number) => (
+            <Tile value={item} column={column} row={row} />
+          ))}
+        </Row>
+      ))}
+    </Col>
+  </Grid>
 );
 Board.defaultProps = {
   Tile: UITile,

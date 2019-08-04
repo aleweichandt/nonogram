@@ -1,24 +1,21 @@
 // @flow
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F00',
-  },
-});
+import {
+  Container, Content, Button, Text,
+} from 'native-base';
 
 export type PropsType = {
   next: () => void,
 }
 
 const Splash = ({ next }: PropsType) => (
-  <View style={styles.container}>
-    <Button title="NEXT" onPress={next} />
-  </View>
+  <Container>
+    <Content padder>
+      <Button onPress={next}>
+        <Text>NEXT</Text>
+      </Button>
+    </Content>
+  </Container>
 );
 
 export default Splash;
