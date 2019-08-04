@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./src",
     "typecheck": "./node_modules/.bin/flow",
-    "jest": "./node_modules/.bin/jest ./src",
+    "jest": "./node_modules/.bin/jest",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "npm run lint && npm run typecheck && npm run jest",
     "coverage": "npm run jest --coverage"
