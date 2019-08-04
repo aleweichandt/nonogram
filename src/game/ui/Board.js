@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
 
 const Board = ({ board, Tile = UITile }: PropsType) => (
   <View style={styles.container}>
-    {board.map((col: OptionType[]) => (
+    {board.map((col: OptionType[], column: number) => (
       <View style={styles.col}>
-        {col.map((item: OptionType) => (
-          <Tile value={item} />
+        {col.map((item: OptionType, row: number) => (
+          <Tile value={item} column={column} row={row} />
         ))}
       </View>
     ))}

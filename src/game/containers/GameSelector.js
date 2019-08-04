@@ -2,9 +2,11 @@
 import { connect } from 'react-redux';
 import { Selection } from '../ui';
 import { getOptions } from '../module';
+import SelectorTile from './SelectorTile';
 
 const mapStateToProps = (state: *) => ({
   options: getOptions(state),
+  Tile: SelectorTile,
 });
 
 export default connect(mapStateToProps, undefined)(Selection);
