@@ -4,13 +4,13 @@ import type { BoardType, OptionType } from './types';
 
 export const clearBoard = (
   board: BoardType,
-): BoardType => board.map(col => col.map(() => OPTION_VOID));
+): BoardType => board.map(row => row.map(() => OPTION_VOID));
 
 export const validateBoard = (
   board: BoardType,
   values: BoardType,
 ): boolean => board.every(
-  (col, x) => col.every((val, y) => val === values[x][y]),
+  (row, y) => row.every((val, x) => val === values[y][x]),
 );
 
 export const updateBoard = (
@@ -18,7 +18,7 @@ export const updateBoard = (
   vx: number,
   vy: number,
   option: OptionType,
-): BoardType => board.map((col, x) => col.map((val, y) => {
+): BoardType => board.map((row, y) => row.map((val, x) => {
   const isTile = vx === x && vy === y;
   return isTile ? option : val;
 }));

@@ -58,14 +58,14 @@ describe('game utils test suite', () => {
       ]);
     });
     it('update col', () => {
-      expect(updateBoard(emptyBoard, 1, 0, B)).toEqual([
+      expect(updateBoard(emptyBoard, 0, 1, B)).toEqual([
         [V, V, V],
         [B, V, V],
         [V, V, V],
       ]);
     });
     it('update row', () => {
-      expect(updateBoard(emptyBoard, 0, 1, B)).toEqual([
+      expect(updateBoard(emptyBoard, 1, 0, B)).toEqual([
         [V, B, V],
         [V, V, V],
         [V, V, V],

@@ -14,12 +14,12 @@ export type PropsType = {
 const Board = ({ board, Tile = UITile }: PropsType) => (
   <Grid>
     <Col>
-      {board.map((col: OptionType[], column: number) => (
+      {board.map((row: OptionType[], rowId: number) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Row key={column}>
-          {col.map((item: OptionType, row: number) => (
+        <Row key={rowId}>
+          {row.map((item: OptionType, colId: number) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Tile key={row} value={item} column={column} row={row} />
+            <Tile key={colId} value={item} column={colId} row={rowId} />
           ))}
         </Row>
       ))}
