@@ -20,8 +20,9 @@ const styles = {
 
 const Selector = ({ options, Tile = UITile }: PropsType) => (
   <View padder>
-    {options.map((item: OptionType) => (
-      <Tile value={item} />
+    {options.map((item: OptionType, index: number) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <Tile key={index} value={item} />
     ))}
   </View>
 );

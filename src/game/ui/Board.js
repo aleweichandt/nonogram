@@ -15,9 +15,11 @@ const Board = ({ board, Tile = UITile }: PropsType) => (
   <Grid>
     <Col>
       {board.map((col: OptionType[], column: number) => (
-        <Row>
+        // eslint-disable-next-line react/no-array-index-key
+        <Row key={column}>
           {col.map((item: OptionType, row: number) => (
-            <Tile value={item} column={column} row={row} />
+            // eslint-disable-next-line react/no-array-index-key
+            <Tile key={row} value={item} column={column} row={row} />
           ))}
         </Row>
       ))}
