@@ -4,12 +4,20 @@ import {
   getCurrentOption,
   getOptions,
   getProgress,
+  createColInfo,
+  createRowInfo,
 } from '../selectors';
 import { OPTION_BLACK as B, OPTION_VOID as V } from '../../const';
 
 const game = {
-  board: [[V, B], [B, V]],
-  progress: [[V, V], [V, B]],
+  board: [
+    [V, B],
+    [B, V],
+  ],
+  progress: [
+    [V, V],
+    [B, V],
+  ],
   currentOption: B,
   options: [V, B],
 };
@@ -29,5 +37,17 @@ describe('game selectors test suite', () => {
   });
   it('get current option', () => {
     expect(getCurrentOption(mockState)).toEqual(game.currentOption);
+  });
+  it('get row info', () => {
+    const getRowInfo = createRowInfo();
+    expect(getRowInfo(mockState, { row: 0 })).toEqual([
+      { option: B, count: 1 },
+    ]);
+  });
+  it('get col info', () => {
+    const getColInfo = createColInfo();
+    expect(getColInfo(mockState, { column: 0 })).toEqual([
+      { option: B, count: 1 },
+    ]);
   });
 });

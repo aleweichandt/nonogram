@@ -1,10 +1,21 @@
 // @flow
 import { createSelector } from 'reselect';
+import { getCol, getRow, getLineInfo } from './utils';
 import type {
-  StateType, StateWithGameType, BoardType, OptionsType, OptionType,
+  StateType, StateWithGameType, BoardType, OptionsType, OptionType, LineType, LineInfoType,
 } from './types';
 
+type PropsType = { row?: number, column?: number };
+
 const gameSelector = ({ game }: StateWithGameType): StateType => game;
+const boardRowSelector = (
+  { game: { board } }: StateWithGameType,
+  { row = 0 }: PropsType,
+): LineType => getRow(board, row);
+const boardColSelector = (
+  { game: { board } }: StateWithGameType,
+  { column = 0 }: PropsType,
+): LineType => getCol(board, column);
 
 export const getBoard: (StateWithGameType) => BoardType = createSelector(
   gameSelector,
@@ -24,4 +35,16 @@ export const getOptions: (StateWithGameType) => OptionsType = createSelector(
 export const getProgress: (StateWithGameType) => BoardType = createSelector(
   gameSelector,
   ({ progress }) => progress,
+);
+
+type InfoSelector = () => (StateWithGameType, PropsType) => LineInfoType[];
+
+export const createRowInfo: InfoSelector = () => createSelector(
+  boardRowSelector,
+  (boardRow: LineType) => getLineInfo(boardRow),
+);
+
+export const createColInfo: InfoSelector = () => createSelector(
+  boardColSelector,
+  (boardCol: LineType) => getLineInfo(boardCol),
 );
