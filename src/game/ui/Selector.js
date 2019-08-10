@@ -5,7 +5,7 @@ import {
 } from 'native-base';
 import { connectStyle } from '../../theme';
 import UITile, { type PropsType as TileType } from './Tile';
-import type { OptionsType, OptionType } from '../types';
+import type { OptionsType, OptionType } from '../module';
 
 export type PropsType = {
   options: OptionsType,

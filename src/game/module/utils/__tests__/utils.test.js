@@ -6,7 +6,7 @@ import {
   getRow,
   getCol,
   getLineInfo,
-} from '../utils';
+} from '../index';
 import { OPTION_BLACK as B, OPTION_VOID as V, OPTION_BLUE as C } from '../../const';
 
 const testBoard = [

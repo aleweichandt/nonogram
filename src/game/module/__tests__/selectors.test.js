@@ -7,7 +7,7 @@ import {
   createColInfo,
   createRowInfo,
 } from '../selectors';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../../const';
+import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
 
 const game = {
   board: [

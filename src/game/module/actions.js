@@ -1,5 +1,5 @@
 // @flow
-import { DEFAULT_OPTIONS, OPTION_VOID, OPTION_BLACK } from '../const';
+import { DEFAULT_OPTIONS, OPTION_VOID, OPTION_BLACK } from './const';
 import type { ActionWithPayload, ActionWithoutPayload } from '../../redux-helpers';
 import type { OptionType } from './types';
 

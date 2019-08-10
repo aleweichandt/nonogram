@@ -5,7 +5,7 @@ import {
 } from 'native-base';
 import UILineInfo, { type PropsType as LineInfoType } from './LineInfo';
 import UITile, { type PropsType as TileType } from './Tile';
-import type { BoardType, OptionType } from '../types';
+import type { BoardType, OptionType } from '../module';
 
 export type PropsType = {
   board: BoardType,

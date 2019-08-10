@@ -5,7 +5,7 @@ import {
 } from 'native-base';
 import { connectStyle } from '../../theme';
 import UIOption, { type PropsType as OptionPropsType } from './Option';
-import type { OptionType } from '../types';
+import type { OptionType } from '../module';
 
 const styles = {
   'NativeBase.Button': {

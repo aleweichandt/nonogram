@@ -5,7 +5,7 @@ import {
   setOption,
   setTile,
 } from '../actions';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../../const';
+import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
 
 describe('game reducer test suite', () => {
   const testBoard = [[B, V], [V, B]];

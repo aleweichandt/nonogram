@@ -2,17 +2,21 @@
 import { OPTION_VOID } from '../const';
 import type {
   BoardType, OptionType, LineType, LineInfoType, InfoType,
-} from './types';
+} from '../types';
 
-export const clearBoard = (
+export const genClearBoard = (
+  clearValue: () => OptionType,
+) => (
   board: BoardType,
-): BoardType => board.map(row => row.map(() => OPTION_VOID));
+): BoardType => board.map(row => row.map(clearValue));
 
-export const validateBoard = (
+export const genValidateBoard = (
+  isValid: (OptionType, OptionType) => boolean,
+) => (
   board: BoardType,
   values: BoardType,
 ): boolean => board.every(
-  (row, y) => row.every((val, x) => val === values[y][x]),
+  (row, y) => row.every((val, x) => isValid(val, values[y][x])),
 );
 
 export const updateBoard = (
@@ -40,7 +44,9 @@ type CountType = {
   last: InfoType,
 };
 
-export const getLineInfo = (
+export const genGetLineInfo = (
+  shouldShowInfo: (OptionType) => boolean,
+) => (
   line: LineType,
   // $FlowFixMe bad reduce definition
 ): LineInfoType[] => [...line, OPTION_VOID].reduce((
@@ -55,7 +61,7 @@ export const getLineInfo = (
     };
   }
   return {
-    result: option === OPTION_VOID ? result : [...result, last],
+    result: shouldShowInfo(option) ? [...result, last] : result,
     last: { option: next, count: 1 },
   };
 }, {

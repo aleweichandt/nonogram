@@ -7,7 +7,7 @@ import {
   SET_TILE, CHECK_STATE, checkState, endGame,
 } from '../actions';
 import { getBoard, getProgress } from '../selectors';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../../const';
+import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
 import {
   onCheckState,
   onSetTile,

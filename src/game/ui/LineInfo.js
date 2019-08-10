@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text } from 'native-base';
 import { connectStyle } from '../../theme';
 // import UIOption, { type PropsType as OptionPropsType } from './Option';
-import type { LineInfoType, InfoType } from '../types';
+import type { LineInfoType, InfoType } from '../module';
 
 const styles = {
   'NativeBase.ViewNB': {

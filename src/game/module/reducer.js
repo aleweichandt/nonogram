@@ -1,7 +1,7 @@
 // @flow
 import { createReducer } from '../../redux-helpers';
 import { INIT_GAME, SET_OPTION, SET_TILE } from './actions';
-import { DEFAULT_OPTIONS, OPTION_BLACK } from '../const';
+import { DEFAULT_OPTIONS, OPTION_BLACK } from './const';
 import { clearBoard, updateBoard } from './utils';
 import type { StateType } from './types';
 

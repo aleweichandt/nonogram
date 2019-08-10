@@ -5,8 +5,8 @@ import {
   Text,
 } from 'native-base';
 import { connectStyle } from '../../theme';
-import { OPTION_BLACK, OPTION_BLOCKED } from '../const';
-import type { OptionType } from '../types';
+import { OPTION_BLACK, OPTION_BLOCKED } from '../module';
+import type { OptionType } from '../module';
 
 export type PropsType = {
   children: OptionType,
