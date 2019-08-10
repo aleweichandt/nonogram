@@ -10,11 +10,11 @@ type PropsType = { row?: number, column?: number };
 const gameSelector = ({ game }: StateWithGameType): StateType => game;
 const boardRowSelector = (
   { game: { board } }: StateWithGameType,
-  { row = 0 }: PropsType,
+  { row = -1 }: PropsType,
 ): LineType => getRow(board, row);
 const boardColSelector = (
   { game: { board } }: StateWithGameType,
-  { column = 0 }: PropsType,
+  { column = -1 }: PropsType,
 ): LineType => getCol(board, column);
 
 export const getBoard: (StateWithGameType) => BoardType = createSelector(
