@@ -6,6 +6,7 @@ import {
   getProgress,
   createColInfo,
   createRowInfo,
+  createValueSelector,
 } from '../selectors';
 import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
 
@@ -49,5 +50,9 @@ describe('game selectors test suite', () => {
     expect(getColInfo(mockState, { column: 0 })).toEqual([
       { option: B, count: 1 },
     ]);
+  });
+  it('get progress value selector', () => {
+    const getValue = createValueSelector();
+    expect(getValue(mockState, { column: 1, row: 1 })).toEqual(V);
   });
 });

@@ -1,21 +1,16 @@
 // @flow
 import { createSelector } from 'reselect';
-import { getCol, getRow, getLineInfo } from './utils';
+import {
+  getCol, getRow, getLineInfo, getValue,
+} from './utils';
 import type {
-  StateType, StateWithGameType, BoardType, OptionsType, OptionType, LineType, LineInfoType,
+  StateType, StateWithGameType, BoardType, OptionsType, OptionType, LineInfoType,
 } from './types';
 
 type PropsType = { row?: number, column?: number };
 
 const gameSelector = ({ game }: StateWithGameType): StateType => game;
-const boardRowSelector = (
-  { game: { board } }: StateWithGameType,
-  { row = -1 }: PropsType,
-): LineType => getRow(board, row);
-const boardColSelector = (
-  { game: { board } }: StateWithGameType,
-  { column = -1 }: PropsType,
-): LineType => getCol(board, column);
+const propsSelector = (state: StateWithGameType, props: PropsType) => props;
 
 export const getBoard: (StateWithGameType) => BoardType = createSelector(
   gameSelector,
@@ -37,14 +32,20 @@ export const getProgress: (StateWithGameType) => BoardType = createSelector(
   ({ progress }) => progress,
 );
 
-type InfoSelector = () => (StateWithGameType, PropsType) => LineInfoType[];
+type ValueSelector = () => (StateWithGameType, PropsType) => OptionType
 
+export const createValueSelector: ValueSelector = () => createSelector(
+  [getProgress, propsSelector],
+  (progress: BoardType, { row = -1, column = -1 }: PropsType) => getValue(progress, row, column),
+);
+
+type InfoSelector = () => (StateWithGameType, PropsType) => LineInfoType[];
 export const createRowInfo: InfoSelector = () => createSelector(
-  boardRowSelector,
-  (boardRow: LineType) => getLineInfo(boardRow),
+  [getBoard, propsSelector],
+  (board: BoardType, { row = -1 }: PropsType) => getLineInfo(getRow(board, row)),
 );
 
 export const createColInfo: InfoSelector = () => createSelector(
-  boardColSelector,
-  (boardCol: LineType) => getLineInfo(boardCol),
+  [getBoard, propsSelector],
+  (board: BoardType, { column = -1 }: PropsType) => getLineInfo(getCol(board, column)),
 );

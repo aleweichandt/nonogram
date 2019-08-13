@@ -10,4 +10,6 @@ export const clearBoard = genClearBoard(clearValue);
 export const validateBoard = genValidateBoard(isValid);
 export const getLineInfo = genGetLineInfo(shouldShowInfo);
 
-export { updateBoard, getRow, getCol } from './utils';
+export {
+  updateBoard, getRow, getCol, getValue,
+} from './utils';

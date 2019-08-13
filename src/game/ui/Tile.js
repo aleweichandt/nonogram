@@ -5,6 +5,7 @@ import {
 } from 'native-base';
 import { connectStyle } from '../../theme';
 import UIOption, { type PropsType as OptionPropsType } from './Option';
+import { OPTION_VOID } from '../module';
 import type { OptionType } from '../module';
 
 const styles = {
@@ -25,14 +26,14 @@ const styles = {
 };
 
 export type PropsType = {
-  value: OptionType,
+  value?: OptionType,
   selected?: boolean,
   onPress?: () => void,
   Option?: React$ComponentType<OptionPropsType>,
 }
 
 const Tile = ({
-  value, selected = false, onPress = () => {}, Option = UIOption,
+  value = OPTION_VOID, selected = false, onPress = () => {}, Option = UIOption,
 }: PropsType) => (
   <Button
     selected={selected}
@@ -42,6 +43,7 @@ const Tile = ({
   </Button>
 );
 Tile.defaultProps = {
+  value: OPTION_VOID,
   Option: UIOption,
   onPress: () => {},
   selected: false,

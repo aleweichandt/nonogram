@@ -21,13 +21,22 @@ export const genValidateBoard = (
 
 export const updateBoard = (
   board: BoardType,
-  vx: number,
-  vy: number,
+  targetRow: number,
+  targetCol: number,
   option: OptionType,
 ): BoardType => board.map((row, y) => row.map((val, x) => {
-  const isTile = vx === x && vy === y;
+  const isTile = targetRow === x && targetCol === y;
   return isTile ? option : val;
 }));
+
+export const getValue = (
+  board: BoardType,
+  row: number,
+  col: number,
+): OptionType => {
+  const targetRow = board[row] || [];
+  return targetRow[col];
+};
 
 export const getRow = (
   board: BoardType,

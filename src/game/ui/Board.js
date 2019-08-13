@@ -27,7 +27,7 @@ const Board = ({ board, Tile = UITile, LineInfo = UILineInfo }: PropsType) => (
         <Row key={rowId}>
           <LineInfo key={rowId} row={rowId} />
           {row.map((item: OptionType, colId: number) => (
-            <Tile key={colId} value={item} column={colId} row={rowId} />
+            <Tile key={colId} column={colId} row={rowId} />
           ))}
         </Row>
       ))}

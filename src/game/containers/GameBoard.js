@@ -1,12 +1,12 @@
 // @flow
 import { connect } from 'react-redux';
 import { Board } from '../ui';
-import { getProgress } from '../module';
+import { getBoard } from '../module';
 import BoardLineInfo from './BoardLineInfo';
 import BoardTile from './BoardTile';
 
 const mapStateToProps = (state: *) => ({
-  board: getProgress(state),
+  board: getBoard(state),
   Tile: BoardTile,
   LineInfo: BoardLineInfo,
 });

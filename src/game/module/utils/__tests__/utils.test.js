@@ -5,6 +5,7 @@ import {
   updateBoard,
   getRow,
   getCol,
+  getValue,
   getLineInfo,
 } from '../index';
 import { OPTION_BLACK as B, OPTION_VOID as V, OPTION_BLUE as C } from '../../const';
@@ -102,6 +103,22 @@ describe('game utils test suite', () => {
     it('returns empty on mismatch', () => {
       expect(getCol(testBoard, -1)).toEqual([]);
       expect(getCol(testBoard, 3)).toEqual([]);
+    });
+  });
+  describe('get value', () => {
+    it('get for valid row and col', () => {
+      expect(getValue(testBoard, 0, 0)).toEqual(V);
+      expect(getValue(testBoard, 0, 2)).toEqual(V);
+      expect(getValue(testBoard, 2, 0)).toEqual(B);
+    });
+    it('get invalid col', () => {
+      expect(getValue(testBoard, 0, -1)).toEqual(undefined);
+    });
+    it('get invalid row', () => {
+      expect(getValue(testBoard, -1, 0)).toEqual(undefined);
+    });
+    it('get both invalid', () => {
+      expect(getValue(testBoard, -1, -1)).toEqual(undefined);
     });
   });
   describe('get line info', () => {
