@@ -20,6 +20,9 @@ const styles = {
     'NativeBase.Text': {
       fontSize: 12,
       padding: 3,
+      '.complete': {
+        color: 'lightgrey',
+      },
     },
   },
 };
@@ -33,8 +36,8 @@ export type PropsType = {
 
 const LineInfo = ({ info = [], row }: PropsType) => (
   <View vertical={row === undefined}>
-    {info.map(({ count }: InfoType) => (
-      <Text>{count}</Text>
+    {info.map(({ count, complete }: InfoType) => (
+      <Text complete={complete}>{count}</Text>
     ))}
   </View>
 );

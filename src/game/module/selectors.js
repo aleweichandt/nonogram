@@ -41,11 +41,19 @@ export const createValueSelector: ValueSelector = () => createSelector(
 
 type InfoSelector = () => (StateWithGameType, PropsType) => LineInfoType[];
 export const createRowInfo: InfoSelector = () => createSelector(
-  [getBoard, propsSelector],
-  (board: BoardType, { row = -1 }: PropsType) => getLineInfo(getRow(board, row)),
+  [getBoard, getProgress, propsSelector],
+  (board: BoardType, progress: BoardType, { row = -1 }: PropsType) => {
+    const rowRef = getRow(board, row);
+    const rowProgress = getRow(progress, row);
+    return getLineInfo(rowRef, rowProgress);
+  },
 );
 
 export const createColInfo: InfoSelector = () => createSelector(
-  [getBoard, propsSelector],
-  (board: BoardType, { column = -1 }: PropsType) => getLineInfo(getCol(board, column)),
+  [getBoard, getProgress, propsSelector],
+  (board: BoardType, progress: BoardType, { column = -1 }: PropsType) => {
+    const colRef = getCol(board, column);
+    const colProgress = getCol(progress, column);
+    return getLineInfo(colRef, colProgress);
+  },
 );

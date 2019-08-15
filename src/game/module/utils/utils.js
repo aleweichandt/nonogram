@@ -57,23 +57,27 @@ export const genGetLineInfo = (
   shouldShowInfo: (OptionType) => boolean,
 ) => (
   line: LineType,
+  progress?: LineType = [],
   // $FlowFixMe bad reduce definition
 ): LineInfoType[] => [...line, OPTION_VOID].reduce((
   { result, last }: CountType,
   next: OptionType,
+  i: number,
 ) => {
-  const { option, count } = last;
+  const prog = progress[i] || OPTION_VOID;
+  const tagged = prog === next;
+  const { option, count, complete } = last;
   if (next === option) {
     return {
       result,
-      last: { option, count: count + 1 },
+      last: { option, count: count + 1, complete: complete && tagged },
     };
   }
   return {
     result: shouldShowInfo(option) ? [...result, last] : result,
-    last: { option: next, count: 1 },
+    last: { option: next, count: 1, complete: tagged },
   };
 }, {
   result: [],
-  last: { option: OPTION_VOID, count: 1 },
+  last: { option: OPTION_VOID, count: 1, complete: false },
 }).result;

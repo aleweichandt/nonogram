@@ -14,6 +14,7 @@ export type OptionsType = OptionType[];
 export type InfoType = {
   option: OptionType,
   count: number,
+  complete: boolean,
 }
 export type LineInfoType = InfoType[];
 

@@ -42,13 +42,13 @@ describe('game selectors test suite', () => {
   it('get row info', () => {
     const getRowInfo = createRowInfo();
     expect(getRowInfo(mockState, { row: 0 })).toEqual([
-      { option: B, count: 1 },
+      { option: B, count: 1, complete: false },
     ]);
   });
   it('get col info', () => {
     const getColInfo = createColInfo();
     expect(getColInfo(mockState, { column: 0 })).toEqual([
-      { option: B, count: 1 },
+      { option: B, count: 1, complete: true },
     ]);
   });
   it('get progress value selector', () => {
