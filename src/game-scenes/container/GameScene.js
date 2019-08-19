@@ -1,6 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
-import GameScreen from '../ui';
+import { GameScreen } from '../ui';
 import { initGame } from '../../game';
 import { TEST_BOARD } from '../const';
 

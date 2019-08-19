@@ -8,7 +8,7 @@ export type PropsType = {
   next: () => void,
 }
 
-const Splash = ({ next }: PropsType) => (
+const SplashScreen = ({ next }: PropsType) => (
   <Container>
     <Content padder>
       <Button onPress={next}>
@@ -18,4 +18,4 @@ const Splash = ({ next }: PropsType) => (
   </Container>
 );
 
-export default Splash;
+export default SplashScreen;
