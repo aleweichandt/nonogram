@@ -11,8 +11,7 @@ import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
 import {
   onCheckState,
   onSetTile,
-  watchCheckState,
-  watchSetTile,
+  watchActions,
 } from '../sagas';
 
 describe('game sagas test suite', () => {
@@ -40,16 +39,10 @@ describe('game sagas test suite', () => {
       expect(gen.next().done).toEqual(true);
     });
   });
-  describe('watch check state', () => {
+  describe('watch actions', () => {
     it('takes every check', () => {
-      const gen = watchCheckState();
+      const gen = watchActions();
       expect(gen.next().value).toEqual(takeEvery(CHECK_STATE, onCheckState));
-      expect(gen.next().done).toEqual(true);
-    });
-  });
-  describe('watch set tile', () => {
-    it('takes every set tile', () => {
-      const gen = watchSetTile();
       expect(gen.next().value).toEqual(takeEvery(SET_TILE, onSetTile));
       expect(gen.next().done).toEqual(true);
     });

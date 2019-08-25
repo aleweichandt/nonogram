@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`game selection actions test suite choose game 1`] = `
+Object {
+  "payload": Object {
+    "gameId": "gameid",
+  },
+  "type": "game-selection/CHOOSE_GAME",
+}
+`;
+
+exports[`game selection actions test suite choose pack 1`] = `
+Object {
+  "payload": Object {
+    "packId": "packid",
+  },
+  "type": "game-selection/CHOOSE_PACK",
+}
+`;
+
+exports[`game selection actions test suite load pack games 1`] = `
+Object {
+  "payload": Object {
+    "packId": "packid",
+  },
+  "type": "game-selection/LOAD_GAMES",
+}
+`;
+
+exports[`game selection actions test suite load packs 1`] = `
+Object {
+  "type": "game-selection/LOAD_PACKS",
+}
+`;
+
+exports[`game selection actions test suite store pack games empty 1`] = `
+Object {
+  "payload": Object {
+    "games": Array [],
+  },
+  "type": "game-selection/STORE_GAMES",
+}
+`;
+
+exports[`game selection actions test suite store pack games filled 1`] = `
+Object {
+  "payload": Object {
+    "games": Array [
+      Object {
+        "boardData": "data",
+        "id": "gameId",
+        "thumbnail": "t-url",
+        "title": "title",
+      },
+    ],
+  },
+  "type": "game-selection/STORE_GAMES",
+}
+`;
+
+exports[`game selection actions test suite store packs empty 1`] = `
+Object {
+  "payload": Object {
+    "packs": Array [],
+  },
+  "type": "game-selection/STORE_PACKS",
+}
+`;
+
+exports[`game selection actions test suite store packs filled 1`] = `
+Object {
+  "payload": Object {
+    "packs": Array [
+      Object {
+        "backgroundUrl": "b-url",
+        "description": "desc",
+        "games": Array [
+          "gameId",
+        ],
+        "id": "packId",
+        "thumbnailUrl": "t-url",
+        "title": "title",
+      },
+    ],
+  },
+  "type": "game-selection/STORE_PACKS",
+}
+`;

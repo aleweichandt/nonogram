@@ -12,22 +12,24 @@ type PropsType = { row?: number, column?: number };
 const gameSelector = ({ game }: StateWithGameType): StateType => game;
 const propsSelector = (state: StateWithGameType, props: PropsType) => props;
 
-export const getBoard: (StateWithGameType) => BoardType = createSelector(
+type SelectorType<R> = (StateWithGameType) => R;
+
+export const getBoard: SelectorType<BoardType> = createSelector(
   gameSelector,
   ({ board }) => board,
 );
 
-export const getCurrentOption: (StateWithGameType) => OptionType = createSelector(
+export const getCurrentOption: SelectorType<OptionType> = createSelector(
   gameSelector,
   ({ currentOption }) => currentOption,
 );
 
-export const getOptions: (StateWithGameType) => OptionsType = createSelector(
+export const getOptions: SelectorType<OptionsType> = createSelector(
   gameSelector,
   ({ options }) => options,
 );
 
-export const getProgress: (StateWithGameType) => BoardType = createSelector(
+export const getProgress: SelectorType<BoardType> = createSelector(
   gameSelector,
   ({ progress }) => progress,
 );
