@@ -1,8 +1,12 @@
 // @flow
 import type { Saga } from 'redux-saga';
 import {
-  takeEvery, put,
+  takeEvery, call, put,
 } from 'redux-saga/effects';
+import {
+  packs,
+  games,
+} from '../../service';
 import {
   LOAD_PACKS,
   CHOOSE_PACK,
@@ -21,15 +25,13 @@ export function* onChoosePack({ payload: { packId } }: ChoosePackAction): Saga<v
 }
 
 export function* onLoadPacks(): Saga<void> {
-  // TODO fetch packs
-  const mocks = [];
-  yield put(storePacks(mocks));
+  const result = yield call(packs);
+  yield put(storePacks(result));
 }
 
 export function* onLoadGames({ payload: { packId } }: LoadGamesAction): Saga<void> {
-  // TODO fetch pack games
-  const mocks = { [packId]: [] };
-  yield put(storeGames(mocks[packId]));
+  const result = yield call(games, packId);
+  yield put(storeGames(result));
 }
 
 export function* watchActions(): Saga<void> {

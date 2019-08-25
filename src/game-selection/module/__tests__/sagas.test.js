@@ -1,7 +1,11 @@
 // @flow
 import {
-  takeEvery, put,
+  takeEvery, call, put,
 } from 'redux-saga/effects';
+import {
+  packs,
+  games,
+} from '../../../service';
 import {
   onChoosePack,
   onLoadPacks,
@@ -27,19 +31,19 @@ describe('game selection sagas test suite', () => {
     expect(gen.next().done).toEqual(true);
   });
   it('on load packs', () => {
-    const packs = [];
+    const result = [];
     const gen = onLoadPacks();
-    // TODO fetch packs
-    expect(gen.next().value).toEqual(put(storePacks(packs)));
+    expect(gen.next().value).toEqual(call(packs));
+    expect(gen.next(result).value).toEqual(put(storePacks(result)));
     expect(gen.next().done).toEqual(true);
   });
   it('on load games', () => {
-    const games = [];
+    const result = [];
     const packId = 'packId';
     const action = loadGames(packId);
     const gen = onLoadGames(action);
-    // TODO fetch pack games
-    expect(gen.next().value).toEqual(put(storeGames(games)));
+    expect(gen.next().value).toEqual(call(games, packId));
+    expect(gen.next(result).value).toEqual(put(storeGames(result)));
     expect(gen.next().done).toEqual(true);
   });
   it('watch actions', () => {
