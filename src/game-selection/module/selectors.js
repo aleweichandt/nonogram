@@ -9,7 +9,18 @@ const gameSelectionSelector = (
   { gameSelection }: StateWithGameSelectionType,
 ): StateType => gameSelection;
 
+const packPropsSelector = (
+  state: StateWithGameSelectionType,
+  props: $Shape<Pack>,
+): $Shape<Pack> => props;
+
+const gamePropsSelector = (
+  state: StateWithGameSelectionType,
+  props: $Shape<Game>,
+): $Shape<Game> => props;
+
 type SelectorType<R> = (StateWithGameSelectionType) => R;
+type SelectorPropType<R, P> = (StateWithGameSelectionType, P) => R;
 
 export const getPacks: SelectorType<{[PackId]: Pack}> = createSelector(
   gameSelectionSelector,
@@ -41,13 +52,22 @@ export const getCurrentGame: SelectorType<?Game> = createSelector(
   },
 );
 
-export const getCurrentPackGames: SelectorType<{[GameId]: Game}> = createSelector(
-  [getCurrentPack, getGames],
-  (pack: ?Pack, allGames: {[GameId]: Game}) => {
-    const { games = [] } = pack || {};
-    return games.reduce((acc: {[GameId]: Game}, id: GameId) => ({
-      ...acc,
-      [id]: allGames[id],
-    }), {});
+export const getPack: SelectorPropType<?Pack, $Shape<Pack>> = createSelector(
+  [gameSelectionSelector, packPropsSelector],
+  ({ packs }: StateType, { id }: $Shape<Pack>) => {
+    if (packs && id) {
+      return packs[id];
+    }
+    return undefined;
+  },
+);
+
+export const getGame: SelectorPropType<?Game, $Shape<Game>> = createSelector(
+  [gameSelectionSelector, gamePropsSelector],
+  ({ games }: StateType, { id }: $Shape<Game>) => {
+    if (games && id) {
+      return games[id];
+    }
+    return undefined;
   },
 );

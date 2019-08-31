@@ -3,7 +3,7 @@ export type GameId = string;
 export type Game = {
   id: GameId,
   title: string,
-  thumbnail: string,
+  thumbnailUrl: string,
   boardData: string,
 }
 

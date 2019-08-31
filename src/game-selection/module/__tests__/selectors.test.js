@@ -4,14 +4,15 @@ import {
   getGames,
   getCurrentPack,
   getCurrentGame,
-  getCurrentPackGames,
+  getPack,
+  getGame,
 } from '../selectors';
 import type { StateWithGameSelectionType } from '../types';
 
 const testGame = {
   id: 'gameId',
   title: 'title',
-  thumbnail: 't-url',
+  thumbnailUrl: 't-url',
   boardData: 'data',
 };
 const testPack = {
@@ -74,21 +75,56 @@ describe('game selection selectors test suite', () => {
       }))).toBeUndefined();
     });
   });
-  describe('get current pack games', () => {
+  describe('get pack with id', () => {
     it('valid', () => {
-      expect(getCurrentPackGames(mockState())).toEqual({
-        gameId: testGame,
-      });
+      expect(getPack(
+        mockState(),
+        { id: 'packId' },
+      )).toEqual(testPack);
     });
-    it('missing current pack', () => {
-      expect(getCurrentPackGames(mockState({
-        currentPack: undefined,
-      }))).toEqual({});
+    it('invalid pack id', () => {
+      expect(getPack(
+        mockState(),
+        { id: 'other' },
+      )).toBeUndefined();
+    });
+    it('missing pack id', () => {
+      expect(getPack(
+        mockState(),
+        {},
+      )).toBeUndefined();
+    });
+    it('missing packs', () => {
+      expect(getPack(
+        mockState({ packs: {} }),
+        { id: 'packId' },
+      )).toBeUndefined();
+    });
+  });
+  describe('get game with id', () => {
+    it('valid', () => {
+      expect(getGame(
+        mockState(),
+        { id: 'gameId' },
+      )).toEqual(testGame);
+    });
+    it('invalid game id', () => {
+      expect(getGame(
+        mockState(),
+        { id: 'other' },
+      )).toBeUndefined();
+    });
+    it('missing game id', () => {
+      expect(getGame(
+        mockState(),
+        {},
+      )).toBeUndefined();
     });
     it('missing games', () => {
-      expect(getCurrentPackGames(mockState({
-        games: {},
-      }))).toEqual({});
+      expect(getGame(
+        mockState({ games: {} }),
+        { id: 'gameId' },
+      )).toBeUndefined();
     });
   });
 });

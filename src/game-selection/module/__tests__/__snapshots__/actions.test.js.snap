@@ -49,7 +49,7 @@ Object {
       Object {
         "boardData": "data",
         "id": "gameId",
-        "thumbnail": "t-url",
+        "thumbnailUrl": "t-url",
         "title": "title",
       },
     ],

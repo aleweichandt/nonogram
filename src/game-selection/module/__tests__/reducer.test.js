@@ -10,7 +10,7 @@ import {
 const testGame = {
   id: 'gameId',
   title: 'title',
-  thumbnail: 't-url',
+  thumbnailUrl: 't-url',
   boardData: 'data',
 };
 const testPack = {
