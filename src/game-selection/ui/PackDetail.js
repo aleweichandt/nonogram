@@ -17,16 +17,13 @@ type PropsType = $Shape<Pack> & {
 
 const styles = {
   'NativeBase.ViewNB': {
-    ImageBackground: {
+    'NativeBase.ImageBackground': {
       width: 300,
       height: 200,
       flex: 1,
       'NativeBase.Text': {
         textAlign: 'center',
       },
-    },
-    'GameSelection.SelectionList': {
-      'GameSelection.GameItem': {},
     },
   },
 };
@@ -35,7 +32,7 @@ const PackDetail = ({
   Game, backgroundUrl, title, games, onGameSelected,
 }: PropsType) => (title ? (
   <View>
-    <ImageBackground source={{ uri: backgroundUrl }}>
+    <ImageBackground source={{ uri: backgroundUrl }} style={{ width: 300, height: 200 }}>
       <Text>
         {title}
       </Text>

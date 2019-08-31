@@ -1,12 +1,12 @@
 // @flow
 import { connect } from 'react-redux';
 
-import { GAME } from '../../routes/module';
+import { PACK_SELECTION } from '../../routes/module';
 import { navigate } from '../../navigation';
 import { SplashScreen } from '../ui';
 
 const mapDispatchToProps = dispatch => ({
-  next: () => dispatch(navigate({ routeName: GAME })),
+  next: () => dispatch(navigate({ routeName: PACK_SELECTION })),
 });
 
 export default connect(null, mapDispatchToProps)(SplashScreen);

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import {
-  Card, CardItem, Left, Body, Text, Image, connectStyle,
+  Card, CardItem, Left, Body, Thumbnail, Text, connectStyle,
 } from 'native-base';
 import type { Game } from '../module';
 
@@ -12,7 +12,7 @@ const styles = {
     flex: 0,
     'NativeBase.CardItem': {
       'NativeBase.Body': {
-        'NativeBase.Image': {
+        'NativeBase.Thumbnail': {
           flex: 1,
           height: 200,
           width: 200,
@@ -29,7 +29,7 @@ const GameItem = ({
   <Card>
     <CardItem>
       <Left>
-        <Image source={{ uri: thumbnailUrl }} />
+        <Thumbnail source={{ uri: thumbnailUrl }} />
         <Body>
           <Text>{title}</Text>
         </Body>

@@ -12,7 +12,7 @@ const testGames = [
   {
     id: 'uid-game-1',
     title: 'kitty-one',
-    thumbnail: 'https://placekitten.com/g/60/40',
+    thumbnailUrl: 'https://placekitten.com/g/60/40',
     boardData: JSON.stringify({
       options: [V, B],
       board: TEST_BOARD,

@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { Image } from 'react-native';
 import {
   Card, CardItem, Left, Thumbnail, Body, Text, connectStyle,
 } from 'native-base';
@@ -13,7 +12,7 @@ const styles = {
     flex: 0,
     'NativeBase.CardItem': {
       'NativeBase.Body': {
-        'NativeBase.Image': {
+        'NativeBase.Thumbnail': {
           flex: 1,
           height: 200,
           width: 200,
@@ -40,7 +39,7 @@ const PackItem = ({
     </CardItem>
     <CardItem>
       <Body>
-        <Image source={{ uri: backgroundUrl }} />
+        <Thumbnail source={{ uri: backgroundUrl }} />
         <Text>
           {description}
         </Text>
