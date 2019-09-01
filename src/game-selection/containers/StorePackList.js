@@ -6,7 +6,7 @@ import { getPacks, choosePack } from '../module';
 import type { StateWithGameSelectionType, PackId } from '../module';
 
 const mapStateToProps = (state: StateWithGameSelectionType) => ({
-  items: Object.keys(getPacks(state)),
+  data: Object.keys(getPacks(state)),
   ItemView: StorePack,
 });
 const mapDispatchToProps = dispatch => ({

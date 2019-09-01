@@ -1,5 +1,7 @@
 // @flow
-import { OPTION_VOID as V, OPTION_BLACK as B, type BoardType } from '../../game';
+import {
+  OPTION_VOID as V, OPTION_BLACK as B, OPTION_BLOCKED as BL, type BoardType,
+} from '../../game';
 
 const TEST_BOARD: BoardType = [
   [V, B, V],
@@ -14,7 +16,7 @@ const testGames = [
     title: 'kitty-one',
     thumbnailUrl: 'https://placekitten.com/g/60/40',
     boardData: JSON.stringify({
-      options: [V, B],
+      options: [V, B, BL],
       board: TEST_BOARD,
     }),
   },

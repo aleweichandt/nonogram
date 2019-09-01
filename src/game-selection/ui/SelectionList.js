@@ -7,7 +7,7 @@ import {
 
 type WithIdType = string & { id: string };
 type PropsType = {
-  items?: WithIdType[],
+  data?: WithIdType[],
   ItemView: React$ComponentType<{ id: string }>,
   onItemSelected?: (id: string) => void,
   style: { list: {}},
@@ -23,7 +23,7 @@ const keyExtractor = (elem: WithIdType): string => (typeof elem === 'string' ? e
 
 class SelectionList extends React.PureComponent<PropsType> {
   static defaultProps = {
-    items: [],
+    data: [],
     onItemSelected: () => {},
   };
 
@@ -43,14 +43,15 @@ class SelectionList extends React.PureComponent<PropsType> {
 
   render() {
     const {
-      style, items = [],
+      style, data = [], ItemView, onItemSelected, ...props
     } = this.props;
     return (
       <FlatList
         style={style.list}
-        data={items}
+        data={data}
         keyExtractor={keyExtractor}
         renderItem={this.renderItem}
+        {...props}
       />
     );
   }

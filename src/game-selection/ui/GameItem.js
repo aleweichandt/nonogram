@@ -29,7 +29,7 @@ const GameItem = ({
   <Card>
     <CardItem>
       <Left>
-        <Thumbnail source={{ uri: thumbnailUrl }} />
+        <Thumbnail large source={{ uri: thumbnailUrl }} />
         <Body>
           <Text>{title}</Text>
         </Body>

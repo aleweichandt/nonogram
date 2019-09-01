@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import {
-  connectStyle, Text, View,
+  connectStyle, Text, Content, View,
 } from 'native-base';
 import {
   ImageBackground,
@@ -11,37 +11,78 @@ import SelectionList from './SelectionList';
 import type { Pack, GameId } from '../module';
 
 type PropsType = $Shape<Pack> & {
+  style: { background: {}, image: {}, title: {}},
   Game: React$ComponentType<GamePropsType>,
   onGameSelected: (id: GameId) => void
 };
 
 const styles = {
-  'NativeBase.ViewNB': {
-    'NativeBase.ImageBackground': {
-      width: 300,
-      height: 200,
-      flex: 1,
-      'NativeBase.Text': {
-        textAlign: 'center',
+  'NativeBase.Content': {
+    'GameSelection.SelectionList': {
+      list: {
+        flex: 1,
       },
     },
   },
+  background: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    resizeMode: 'cover',
+  },
+  image: {
+    opacity: 0.5,
+    backgroundColor: 'white',
+  },
+  title: {
+    margin: 10,
+    padding: 10,
+    borderWidth: 2,
+    borderRadius: 25,
+    borderColor: 'gray',
+    backgroundColor: 'white',
+  },
 };
 
-const PackDetail = ({
-  Game, backgroundUrl, title, games, onGameSelected,
-}: PropsType) => (title ? (
-  <View>
-    <ImageBackground source={{ uri: backgroundUrl }} style={{ width: 300, height: 200 }}>
-      <Text>
-        {title}
-      </Text>
-    </ImageBackground>
-    <SelectionList items={games} ItemView={Game} onItemSelected={onGameSelected} />
-  </View>
-) : null);
-PackDetail.defaultProps = {
-  Game: GameView,
-};
+class PackDetail extends React.PureComponent<PropsType> {
+  static defaultProps = {
+    Game: GameView,
+  };
+
+  renderHeader = () => {
+    const {
+      style, backgroundUrl, title,
+    } = this.props;
+    return (
+      <ImageBackground
+        source={{ uri: backgroundUrl }}
+        style={style.background}
+        imageStyle={style.image}
+      >
+        <View style={style.title}>
+          <Text>
+            {title}
+          </Text>
+        </View>
+      </ImageBackground>
+    );
+  }
+
+  render() {
+    const {
+      Game, title, games, onGameSelected,
+    } = this.props;
+    return (title ? (
+      <Content>
+        <SelectionList
+          data={games}
+          ItemView={Game}
+          onItemSelected={onGameSelected}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </Content>
+    ) : null);
+  }
+}
 
 export default connectStyle('GameSelection.PackDetail', styles)(PackDetail);

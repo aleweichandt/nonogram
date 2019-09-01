@@ -6,8 +6,8 @@ const testPacks = [
     games: ['uid-game-1'],
     title: 'kitten',
     description: 'tutorial-description',
-    thumbnailUrl: 'https://placekitten.com/g/60/40',
-    backgroundUrl: 'https://placekitten.com/g/300/200',
+    thumbnailUrl: 'https://placekitten.com/g/300/200',
+    backgroundUrl: 'https://placekitten.com/g/600/400',
   },
 ];
 
