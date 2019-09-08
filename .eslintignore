@@ -1,8 +1,0 @@
-bin/
-node_modules/
-ios/
-android/
-docs/
-babel.config.js
-jest-setup.js
-metro.config.js

@@ -12,6 +12,9 @@ module.exports = {
         experimentalImportSupport: false,
         inlineRequires: false,
       },
+      getSourceExts() {
+        return ['ts', 'tsx'];
+      },
     }),
   },
 };
