@@ -1,0 +1,11 @@
+bin/
+node_modules/
+ios/
+android/
+docs/
+babel.config.js
+jest-setup.ts
+jest-config.js
+metro.config.js
+tsconfig.json
+prettierrc.js
