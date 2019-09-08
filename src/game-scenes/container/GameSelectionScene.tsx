@@ -1,3 +1,3 @@
-import { GameSelectionScreen } from '../ui';
+import {GameSelectionScreen} from '../ui';
 
 export default GameSelectionScreen;

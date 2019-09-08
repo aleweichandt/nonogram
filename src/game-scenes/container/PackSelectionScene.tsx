@@ -1,3 +1,3 @@
-import { PackSelectionScreen } from '../ui';
+import {PackSelectionScreen} from '../ui';
 
 export default PackSelectionScreen;

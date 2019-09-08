@@ -1,13 +1,14 @@
-import { OPTION_VOID, OPTION_BLOCKED } from '../const';
-import { OptionType, OptionsType } from '../types';
+import {OPTION_VOID, OPTION_BLOCKED} from '../const';
+import {OptionType, OptionsType} from '../types';
 
-const validGroup: OptionsType[] = [
-  [OPTION_BLOCKED, OPTION_VOID],
-];
+const validGroup: OptionsType[] = [[OPTION_BLOCKED, OPTION_VOID]];
 
-
-export const isValid = (boardOption: OptionType, progressOption: OptionType) => {
-  const groupMatcher = (group: OptionType[]) => group.includes(boardOption) && group.includes(progressOption);
+export const isValid = (
+  boardOption: OptionType,
+  progressOption: OptionType,
+) => {
+  const groupMatcher = (group: OptionType[]) =>
+    group.includes(boardOption) && group.includes(progressOption);
   const matches = validGroup.some(groupMatcher);
   return matches || boardOption === progressOption;
 };

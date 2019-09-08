@@ -1,10 +1,5 @@
-import {
-  takeEvery, call, put,
-} from 'redux-saga/effects';
-import {
-  packs,
-  games,
-} from '../../service';
+import {takeEvery, call, put} from 'redux-saga/effects';
+import {packs, games} from '../../service';
 import {
   LOAD_PACKS,
   CHOOSE_PACK,
@@ -13,12 +8,9 @@ import {
   storePacks,
   storeGames,
 } from './actions';
-import {
-  ChoosePackAction,
-  LoadGamesAction,
-} from './actions';
+import {ChoosePackAction, LoadGamesAction} from './actions';
 
-export function* onChoosePack({ payload: { packId } }: ChoosePackAction) {
+export function* onChoosePack({payload: {packId}}: ChoosePackAction) {
   yield put(loadGames(packId));
 }
 
@@ -27,7 +19,7 @@ export function* onLoadPacks() {
   yield put(storePacks(result));
 }
 
-export function* onLoadGames({ payload: { packId } }: LoadGamesAction) {
+export function* onLoadGames({payload: {packId}}: LoadGamesAction) {
   const result = yield call(games, packId);
   yield put(storeGames(result));
 }
@@ -38,6 +30,4 @@ export function* watchActions() {
   yield takeEvery(CHOOSE_PACK, onChoosePack);
 }
 
-export default [
-  watchActions,
-];
+export default [watchActions];

@@ -1,9 +1,9 @@
-import { NavigationDispatch } from 'react-navigation';
+import {NavigationDispatch} from 'react-navigation';
 
 export type StateType = {
-  dispatch: NavigationDispatch | undefined,
-}
+  dispatch: NavigationDispatch | undefined;
+};
 
 export type StateWithNavigationType = {
-  navigation: StateType,
-}
+  navigation: StateType;
+};

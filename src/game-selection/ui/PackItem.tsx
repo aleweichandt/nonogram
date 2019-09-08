@@ -1,13 +1,11 @@
 import React from 'react';
-import { ImageBackground } from 'react-native';
-import {
-  Card, CardItem, Body, Text, View,
-} from 'native-base';
-import { connectStyle } from '../../theme';
-import { Pack } from '../module';
+import {ImageBackground} from 'react-native';
+import {Card, CardItem, Body, Text, View} from 'native-base';
+import {connectStyle} from '../../theme';
+import {Pack} from '../module';
 
 type PropsType = Pack & {
-  style: { background: {}, title: {}, image: {}}
+  style: {background: {}; title: {}; image: {}};
 };
 
 const styles = {
@@ -42,32 +40,23 @@ const styles = {
   },
 };
 
-const PackItem = ({
-  style,
-  title,
-  description,
-  thumbnailUrl,
-}: PropsType) => (title ? (
-  <Card>
-    <CardItem>
-      <Body>
-        <ImageBackground
-          source={{ uri: thumbnailUrl }}
-          style={style.background}
-          imageStyle={style.image}
-        >
-          <View style={style.title}>
-            <Text>
-              {title}
-            </Text>
-          </View>
-        </ImageBackground>
-        <Text>
-          {description}
-        </Text>
-      </Body>
-    </CardItem>
-  </Card>
-) : null);
+const PackItem = ({style, title, description, thumbnailUrl}: PropsType) =>
+  title ? (
+    <Card>
+      <CardItem>
+        <Body>
+          <ImageBackground
+            source={{uri: thumbnailUrl}}
+            style={style.background}
+            imageStyle={style.image}>
+            <View style={style.title}>
+              <Text>{title}</Text>
+            </View>
+          </ImageBackground>
+          <Text>{description}</Text>
+        </Body>
+      </CardItem>
+    </Card>
+  ) : null;
 
 export default connectStyle('GameSelection.PackItem', styles)(PackItem);

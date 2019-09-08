@@ -1,6 +1,6 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { ThemeProvider } from './theme';
+import {Provider} from 'react-redux';
+import {ThemeProvider} from './theme';
 
 import store from './store';
 import AppContainer from './router';

@@ -7,17 +7,11 @@ import {
   createRowInfo,
   createValueSelector,
 } from '../selectors';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
+import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
 
 const game = {
-  board: [
-    [V, B],
-    [B, V],
-  ],
-  progress: [
-    [V, V],
-    [B, V],
-  ],
+  board: [[V, B], [B, V]],
+  progress: [[V, V], [B, V]],
   currentOption: B,
   options: [V, B],
 };
@@ -40,18 +34,18 @@ describe('game selectors test suite', () => {
   });
   it('get row info', () => {
     const getRowInfo = createRowInfo();
-    expect(getRowInfo(mockState, { row: 0 })).toEqual([
-      { option: B, count: 1, complete: false },
+    expect(getRowInfo(mockState, {row: 0})).toEqual([
+      {option: B, count: 1, complete: false},
     ]);
   });
   it('get col info', () => {
     const getColInfo = createColInfo();
-    expect(getColInfo(mockState, { column: 0 })).toEqual([
-      { option: B, count: 1, complete: true },
+    expect(getColInfo(mockState, {column: 0})).toEqual([
+      {option: B, count: 1, complete: true},
     ]);
   });
   it('get progress value selector', () => {
     const getValue = createValueSelector();
-    expect(getValue(mockState, { column: 1, row: 1 })).toEqual(V);
+    expect(getValue(mockState, {column: 1, row: 1})).toEqual(V);
   });
 });

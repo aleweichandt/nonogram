@@ -1,9 +1,10 @@
-import { createStackNavigator } from 'react-navigation-stack';
+import {createStackNavigator} from 'react-navigation-stack';
+import {SPLASH, GAME, PACK_SELECTION, GAME_SELECTION} from '../../routes';
 import {
-  SPLASH, GAME, PACK_SELECTION, GAME_SELECTION,
-} from '../../routes';
-import {
-  GameScene, SplashScene, PackSelectionScene, GameSelectionScene,
+  GameScene,
+  SplashScene,
+  PackSelectionScene,
+  GameSelectionScene,
 } from '../../game-scenes';
 
 export default createStackNavigator({

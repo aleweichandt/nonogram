@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import AppContainer from '../ui';
-import { setNavigation } from '../../navigation/module';
+import {setNavigation} from '../../navigation/module';
 
 const mapDispatchToProps = (dispatch: any) => ({
   // TODO fix types
@@ -11,4 +11,7 @@ const mapDispatchToProps = (dispatch: any) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(AppContainer);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(AppContainer);

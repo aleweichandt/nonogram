@@ -1,8 +1,7 @@
-import { createReducer } from '../../redux-helpers';
-import { SET_NAVIGATION } from './actions';
-import { SetNavigationAction } from './actions';
-import { StateType } from './types';
-
+import {createReducer} from '../../redux-helpers';
+import {SET_NAVIGATION} from './actions';
+import {SetNavigationAction} from './actions';
+import {StateType} from './types';
 
 export const initialState: StateType = {
   dispatch: undefined,
@@ -10,7 +9,7 @@ export const initialState: StateType = {
 
 const handleSetNavigation = (
   state: StateType,
-  { payload: { dispatch } }: SetNavigationAction,
+  {payload: {dispatch}}: SetNavigationAction,
 ): StateType => ({
   ...state,
   dispatch,

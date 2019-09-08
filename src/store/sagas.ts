@@ -1,9 +1,9 @@
-import { all, fork } from 'redux-saga/effects';
+import {all, fork} from 'redux-saga/effects';
 
-import { sagas as navigationSagas } from '../navigation';
-import { sagas as gameScenesSagas } from '../game-scenes';
-import { sagas as gameSagas } from '../game';
-import { sagas as gameSelectionSagas } from '../game-selection';
+import {sagas as navigationSagas} from '../navigation';
+import {sagas as gameScenesSagas} from '../game-scenes';
+import {sagas as gameSagas} from '../game';
+import {sagas as gameSelectionSagas} from '../game-selection';
 
 export default function* rootSaga() {
   const sagas = [

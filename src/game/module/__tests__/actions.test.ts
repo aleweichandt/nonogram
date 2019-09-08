@@ -1,11 +1,5 @@
-import {
-  initGame,
-  setOption,
-  setTile,
-  checkState,
-  endGame,
-} from '../actions';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
+import {initGame, setOption, setTile, checkState, endGame} from '../actions';
+import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
 
 describe('game actions test suite', () => {
   const testBoard = [[B, V], [V, B]];

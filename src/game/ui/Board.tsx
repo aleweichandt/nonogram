@@ -1,18 +1,16 @@
 import React from 'react';
-import {
-  Grid, Col, Row,
-} from 'native-base';
-import UILineInfo, {  PropsType as LineInfoType } from './LineInfo';
-import UITile, {  PropsType as TileType } from './Tile';
-import { BoardType, OptionType } from '../module';
+import {Grid, Col, Row} from 'native-base';
+import UILineInfo, {PropsType as LineInfoType} from './LineInfo';
+import UITile, {PropsType as TileType} from './Tile';
+import {BoardType, OptionType} from '../module';
 
 export type PropsType = {
-  board: BoardType,
-  Tile?: React.ComponentType<TileType>,
-  LineInfo?: React.ComponentType<LineInfoType>,
-}
+  board: BoardType;
+  Tile?: React.ComponentType<TileType>;
+  LineInfo?: React.ComponentType<LineInfoType>;
+};
 
-const Board = ({ board, Tile = UITile, LineInfo = UILineInfo }: PropsType) => (
+const Board = ({board, Tile = UITile, LineInfo = UILineInfo}: PropsType) => (
   /* eslint-disable react/no-array-index-key */
   <Grid>
     <Col>

@@ -1,11 +1,9 @@
 import React from 'react';
-import {
-  Button,
-} from 'native-base';
-import { connectStyle } from '../../theme';
-import UIOption, {  PropsType as OptionPropsType } from './Option';
-import { OPTION_VOID } from '../module';
-import { OptionType } from '../module';
+import {Button} from 'native-base';
+import {connectStyle} from '../../theme';
+import UIOption, {PropsType as OptionPropsType} from './Option';
+import {OPTION_VOID} from '../module';
+import {OptionType} from '../module';
 
 const styles = {
   'NativeBase.Button': {
@@ -25,20 +23,20 @@ const styles = {
 };
 
 export type PropsType = {
-  value?: OptionType,
-  selected?: boolean,
-  onPress?: () => void,
-  Option?: React.ComponentType<OptionPropsType>,
-}
+  value?: OptionType;
+  selected?: boolean;
+  onPress?: () => void;
+  Option?: React.ComponentType<OptionPropsType>;
+};
 
 const Tile = ({
-  value = OPTION_VOID, selected = false, onPress = () => {}, Option = UIOption,
+  value = OPTION_VOID,
+  selected = false,
+  onPress = () => {},
+  Option = UIOption,
 }: PropsType) => (
   // @ts-ignore nativebase definition
-  <Button
-    selected={selected}
-    onPress={onPress}
-  >
+  <Button selected={selected} onPress={onPress}>
     <Option>{value}</Option>
   </Button>
 );

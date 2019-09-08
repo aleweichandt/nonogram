@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  Container,
-} from 'native-base';
-import { PackSelection } from '../../game-selection';
+import {Container} from 'native-base';
+import {PackSelection} from '../../game-selection';
 
-export type PropsType = {
-}
+export type PropsType = {};
 
 const PackSelectionScreen = () => (
   <Container>

@@ -1,15 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-} from 'native-base';
-import { connectStyle } from '../../theme';
-import { OPTION_BLACK, OPTION_BLOCKED } from '../module';
-import { OptionType } from '../module';
+import {View, Text} from 'native-base';
+import {connectStyle} from '../../theme';
+import {OPTION_BLACK, OPTION_BLOCKED} from '../module';
+import {OptionType} from '../module';
 
 export type PropsType = {
-  children: OptionType,
-}
+  children: OptionType;
+};
 
 const styles = {
   'NativeBase.ViewNB': {
@@ -27,12 +24,10 @@ const styles = {
   },
 };
 
-const BaseOption = ({ children }: PropsType) => (
+const BaseOption = ({children}: PropsType) => (
   // @ts-ignore nativebase definition
   <View black={OPTION_BLACK === children}>
-    {OPTION_BLOCKED === children ? (
-      <Text>X</Text>
-    ) : null}
+    {OPTION_BLOCKED === children ? <Text>X</Text> : null}
   </View>
 );
 

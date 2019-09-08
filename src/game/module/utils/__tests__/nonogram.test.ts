@@ -1,8 +1,4 @@
-import {
-  isValid,
-  clearValue,
-  shouldShowInfo,
-} from '../nonogram';
+import {isValid, clearValue, shouldShowInfo} from '../nonogram';
 import {
   OPTION_BLUE as A,
   OPTION_BLACK as B,

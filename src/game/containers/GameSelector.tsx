@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import { Selector } from '../ui';
-import { getOptions, StateWithGameType } from '../module';
+import {connect} from 'react-redux';
+import {Selector} from '../ui';
+import {getOptions, StateWithGameType} from '../module';
 import SelectorTile from './SelectorTile';
 
 const mapStateToProps = (state: StateWithGameType) => ({
@@ -8,4 +8,7 @@ const mapStateToProps = (state: StateWithGameType) => ({
   Tile: SelectorTile,
 });
 
-export default connect(mapStateToProps, undefined)(Selector);
+export default connect(
+  mapStateToProps,
+  undefined,
+)(Selector);

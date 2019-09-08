@@ -1,6 +1,7 @@
 import {
   // @ts-ignore:
-  getTheme, variables,
+  getTheme,
+  variables,
 } from 'native-base';
 import light from './light';
 

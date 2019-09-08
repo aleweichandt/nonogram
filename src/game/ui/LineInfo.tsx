@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'native-base';
-import { connectStyle } from '../../theme';
+import {View, Text} from 'native-base';
+import {connectStyle} from '../../theme';
 // import UIOption, {  PropsType as OptionPropsType } from './Option';
-import { LineInfoType, InfoType } from '../module';
+import {LineInfoType, InfoType} from '../module';
 
 const styles = {
   'NativeBase.ViewNB': {
@@ -27,16 +27,16 @@ const styles = {
 };
 
 export type PropsType = {
-  info?: LineInfoType,
-  row?: number,
-  column?: number, // eslint-disable-line react/no-unused-prop-types
+  info?: LineInfoType;
+  row?: number;
+  column?: number; // eslint-disable-line react/no-unused-prop-types
   // Option?: React$ComponentType<OptionPropsType>,
 };
 
-const LineInfo = ({ info = [], row }: PropsType) => (
+const LineInfo = ({info = [], row}: PropsType) => (
   // @ts-ignore nativebase definition
   <View vertical={row === undefined}>
-    {info.map(({ count, complete }: InfoType) => (
+    {info.map(({count, complete}: InfoType) => (
       // @ts-ignore nativebase definition
       <Text complete={complete}>{count}</Text>
     ))}

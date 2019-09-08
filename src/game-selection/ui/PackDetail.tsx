@@ -1,19 +1,15 @@
 import React from 'react';
-import {
-  Text, Content, View,
-} from 'native-base';
-import { connectStyle } from '../../theme';
-import {
-  ImageBackground,
-} from 'react-native';
-import GameView, {  PropsType as GamePropsType } from './GameItem';
+import {Text, Content, View} from 'native-base';
+import {connectStyle} from '../../theme';
+import {ImageBackground} from 'react-native';
+import GameView, {PropsType as GamePropsType} from './GameItem';
 import SelectionList from './SelectionList';
-import { Pack, GameId } from '../module';
+import {Pack, GameId} from '../module';
 
 type PropsType = Pack & {
-  style: { background: {}, image: {}, title: {}},
-  Game: React.PureComponent<GamePropsType>,
-  onGameSelected: (id: GameId) => void
+  style: {background: {}; image: {}; title: {}};
+  Game: React.PureComponent<GamePropsType>;
+  onGameSelected: (id: GameId) => void;
 };
 
 const styles = {
@@ -50,29 +46,22 @@ class PackDetail extends React.PureComponent<PropsType> {
   };
 
   renderHeader = () => {
-    const {
-      style, backgroundUrl, title,
-    } = this.props;
+    const {style, backgroundUrl, title} = this.props;
     return (
       <ImageBackground
-        source={{ uri: backgroundUrl }}
+        source={{uri: backgroundUrl}}
         style={style.background}
-        imageStyle={style.image}
-      >
+        imageStyle={style.image}>
         <View style={style.title}>
-          <Text>
-            {title}
-          </Text>
+          <Text>{title}</Text>
         </View>
       </ImageBackground>
     );
-  }
+  };
 
   render() {
-    const {
-      Game, title, games, onGameSelected,
-    } = this.props;
-    return (title ? (
+    const {Game, title, games, onGameSelected} = this.props;
+    return title ? (
       <Content>
         <SelectionList
           data={games}
@@ -81,7 +70,7 @@ class PackDetail extends React.PureComponent<PropsType> {
           ListHeaderComponent={this.renderHeader}
         />
       </Content>
-    ) : null);
+    ) : null;
   }
 }
 

@@ -10,7 +10,7 @@ const testPacks = [
 ];
 
 function getPacks(): Promise<Array<{}>> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(testPacks);
     }, 3000);

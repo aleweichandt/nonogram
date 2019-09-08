@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  Card, CardItem, Left, Body, Thumbnail, Text,
-} from 'native-base';
-import { connectStyle } from '../../theme';
-import { Game } from '../module';
+import {Card, CardItem, Left, Body, Thumbnail, Text} from 'native-base';
+import {connectStyle} from '../../theme';
+import {Game} from '../module';
 
 export type PropsType = Game & {};
 
@@ -22,20 +20,18 @@ const styles = {
   },
 };
 
-const GameItem = ({
-  title,
-  thumbnailUrl,
-}: PropsType) => (title ? (
-  <Card>
-    <CardItem>
-      <Left>
-        <Thumbnail large source={{ uri: thumbnailUrl }} />
-        <Body>
-          <Text>{title}</Text>
-        </Body>
-      </Left>
-    </CardItem>
-  </Card>
-) : null);
+const GameItem = ({title, thumbnailUrl}: PropsType) =>
+  title ? (
+    <Card>
+      <CardItem>
+        <Left>
+          <Thumbnail large source={{uri: thumbnailUrl}} />
+          <Body>
+            <Text>{title}</Text>
+          </Body>
+        </Left>
+      </CardItem>
+    </Card>
+  ) : null;
 
 export default connectStyle('GameSelection.GameItem', styles)(GameItem);

@@ -1,17 +1,9 @@
-import {
-  takeEvery, put, select, call,
-} from 'redux-saga/effects';
-import { validateBoard } from '../utils';
-import {
-  SET_TILE, CHECK_STATE, checkState, endGame,
-} from '../actions';
-import { getBoard, getProgress } from '../selectors';
-import { OPTION_BLACK as B, OPTION_VOID as V } from '../const';
-import {
-  onCheckState,
-  onSetTile,
-  watchActions,
-} from '../sagas';
+import {takeEvery, put, select, call} from 'redux-saga/effects';
+import {validateBoard} from '../utils';
+import {SET_TILE, CHECK_STATE, checkState, endGame} from '../actions';
+import {getBoard, getProgress} from '../selectors';
+import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
+import {onCheckState, onSetTile, watchActions} from '../sagas';
 
 describe('game sagas test suite', () => {
   describe('on check state', () => {

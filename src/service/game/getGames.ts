@@ -1,12 +1,11 @@
 import {
-  OPTION_VOID as V, OPTION_BLACK as B, OPTION_BLOCKED as BL, BoardType,
+  OPTION_VOID as V,
+  OPTION_BLACK as B,
+  OPTION_BLOCKED as BL,
+  BoardType,
 } from '../../game';
 
-const TEST_BOARD: BoardType = [
-  [V, B, V],
-  [B, V, B],
-  [B, B, B],
-];
+const TEST_BOARD: BoardType = [[V, B, V], [B, V, B], [B, B, B]];
 
 // TODO remove mock
 const testGames = [
@@ -23,7 +22,7 @@ const testGames = [
 
 // eslint-disable-next-line no-unused-vars
 function getGames(packId: string): Promise<Array<{}>> {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => {
       resolve(testGames);
     }, 3000);

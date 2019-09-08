@@ -1,11 +1,7 @@
-import {
-  takeEvery, put, select, call,
-} from 'redux-saga/effects';
-import {
-  SET_TILE, CHECK_STATE, checkState, endGame,
-} from './actions';
-import { getBoard, getProgress } from './selectors';
-import { validateBoard } from './utils';
+import {takeEvery, put, select, call} from 'redux-saga/effects';
+import {SET_TILE, CHECK_STATE, checkState, endGame} from './actions';
+import {getBoard, getProgress} from './selectors';
+import {validateBoard} from './utils';
 
 export function* onCheckState() {
   const board = yield select(getBoard);
@@ -25,6 +21,4 @@ export function* watchActions() {
   yield takeEvery(SET_TILE, onSetTile);
 }
 
-export default [
-  watchActions,
-];
+export default [watchActions];

@@ -6,7 +6,7 @@ import {
   getPack,
   getGame,
 } from '../selectors';
-import { StateWithGameSelectionType } from '../types';
+import {StateWithGameSelectionType} from '../types';
 
 const testGame = {
   id: 'gameId',
@@ -22,8 +22,8 @@ const testPack = {
   thumbnailUrl: 't-url',
   backgroundUrl: 'b-url',
 };
-const packs = { packId: testPack };
-const games = { gameId: testGame };
+const packs = {packId: testPack};
+const games = {gameId: testGame};
 
 const mockState = (props: {} = {}): StateWithGameSelectionType => ({
   gameSelection: {
@@ -47,15 +47,23 @@ describe('game selection selectors test suite', () => {
       expect(getCurrentPack(mockState())).toEqual(testPack);
     });
     it('missing current pack', () => {
-      expect(getCurrentPack(mockState({
-        currentPack: undefined,
-      }))).toBeUndefined();
+      expect(
+        getCurrentPack(
+          mockState({
+            currentPack: undefined,
+          }),
+        ),
+      ).toBeUndefined();
     });
     it('missing packs', () => {
-      expect(getCurrentPack(mockState({
-        packs: {},
-        currentPack: undefined,
-      }))).toBeUndefined();
+      expect(
+        getCurrentPack(
+          mockState({
+            packs: {},
+            currentPack: undefined,
+          }),
+        ),
+      ).toBeUndefined();
     });
   });
   describe('get current game', () => {
@@ -63,55 +71,45 @@ describe('game selection selectors test suite', () => {
       expect(getCurrentGame(mockState())).toEqual(testGame);
     });
     it('missing current game', () => {
-      expect(getCurrentGame(mockState({
-        currentGame: undefined,
-      }))).toBeUndefined();
+      expect(
+        getCurrentGame(
+          mockState({
+            currentGame: undefined,
+          }),
+        ),
+      ).toBeUndefined();
     });
     it('missing games', () => {
-      expect(getCurrentGame(mockState({
-        games: {},
-        currentGame: undefined,
-      }))).toBeUndefined();
+      expect(
+        getCurrentGame(
+          mockState({
+            games: {},
+            currentGame: undefined,
+          }),
+        ),
+      ).toBeUndefined();
     });
   });
   describe('get pack with id', () => {
     it('valid', () => {
-      expect(getPack(
-        mockState(),
-        { id: 'packId' },
-      )).toEqual(testPack);
+      expect(getPack(mockState(), {id: 'packId'})).toEqual(testPack);
     });
     it('invalid pack id', () => {
-      expect(getPack(
-        mockState(),
-        { id: 'other' },
-      )).toBeUndefined();
+      expect(getPack(mockState(), {id: 'other'})).toBeUndefined();
     });
     it('missing packs', () => {
-      expect(getPack(
-        mockState({ packs: {} }),
-        { id: 'packId' },
-      )).toBeUndefined();
+      expect(getPack(mockState({packs: {}}), {id: 'packId'})).toBeUndefined();
     });
   });
   describe('get game with id', () => {
     it('valid', () => {
-      expect(getGame(
-        mockState(),
-        { id: 'gameId' },
-      )).toEqual(testGame);
+      expect(getGame(mockState(), {id: 'gameId'})).toEqual(testGame);
     });
     it('invalid game id', () => {
-      expect(getGame(
-        mockState(),
-        { id: 'other' },
-      )).toBeUndefined();
+      expect(getGame(mockState(), {id: 'other'})).toBeUndefined();
     });
     it('missing games', () => {
-      expect(getGame(
-        mockState({ games: {} }),
-        { id: 'gameId' },
-      )).toBeUndefined();
+      expect(getGame(mockState({games: {}}), {id: 'gameId'})).toBeUndefined();
     });
   });
 });

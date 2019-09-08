@@ -1,4 +1,4 @@
-import { Store } from 'redux';
+import {Store} from 'redux';
 // @ts-ignore
 import mocks from 'react-native-jest-mocks';
 // import Enzyme from 'enzyme';
@@ -8,5 +8,6 @@ mocks.initAll();
 // Enzyme.configure({ adapter: new Adapter() });
 
 jest.mock('redux-logger', () => ({
-  createLogger: () => (store: Store) => (next: any) => (action: any) => next(action), 
+  createLogger: () => (store: Store) => (next: any) => (action: any) =>
+    next(action),
 }));

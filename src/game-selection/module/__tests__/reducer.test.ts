@@ -1,10 +1,5 @@
-import reducer, { initialState } from '../reducer';
-import {
-  storeGames,
-  chooseGame,
-  storePacks,
-  choosePack,
-} from '../actions';
+import reducer, {initialState} from '../reducer';
+import {storeGames, chooseGame, storePacks, choosePack} from '../actions';
 
 const testGame = {
   id: 'gameId',
@@ -20,8 +15,8 @@ const testPack = {
   thumbnailUrl: 't-url',
   backgroundUrl: 'b-url',
 };
-const packs = { packId: testPack };
-const games = { gameId: testGame };
+const packs = {packId: testPack};
+const games = {gameId: testGame};
 
 const filledState = {
   ...initialState,

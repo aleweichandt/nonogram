@@ -1,22 +1,21 @@
 import React from 'react';
-import { FlatList, TouchableOpacity } from 'react-native';
-import { connectStyle } from '../../theme';
+import {FlatList, TouchableOpacity} from 'react-native';
+import {connectStyle} from '../../theme';
 
-type WithIdType = string & { id: string };
+type WithIdType = string & {id: string};
 type PropsType = {
-  data?: WithIdType[],
-  ItemView: React.ComponentType<{ id: string }>,
-  onItemSelected?: (id: string) => void,
-  style: { list: {}},
-}
-
-const styles = {
-  list: {
-
-  },
+  data?: WithIdType[];
+  ItemView: React.ComponentType<{id: string}>;
+  onItemSelected?: (id: string) => void;
+  style: {list: {}};
 };
 
-const keyExtractor = (elem: WithIdType): string => (typeof elem === 'string' ? elem : elem.id);
+const styles = {
+  list: {},
+};
+
+const keyExtractor = (elem: WithIdType): string =>
+  typeof elem === 'string' ? elem : elem.id;
 
 class SelectionList extends React.PureComponent<PropsType> {
   static defaultProps = {
@@ -24,24 +23,20 @@ class SelectionList extends React.PureComponent<PropsType> {
     onItemSelected: () => {},
   };
 
-  renderItem = ({ item }: { item: WithIdType }) => {
+  renderItem = ({item}: {item: WithIdType}) => {
     // eslint-disable-next-line no-unused-vars
-    const { ItemView, onItemSelected = (id: string) => {} } = this.props;
+    const {ItemView, onItemSelected = (id: string) => {}} = this.props;
     const id = keyExtractor(item);
     return (
-      <TouchableOpacity
-        key={id}
-        onPress={() => onItemSelected(id)}
-      >
+      <TouchableOpacity key={id} onPress={() => onItemSelected(id)}>
         <ItemView id={id} />
       </TouchableOpacity>
     );
-  }
+  };
 
   render() {
-    const {
-      style, data = [], ItemView, onItemSelected, ...props
-    } = this.props;
+    // eslint-disable-next-line no-unused-vars
+    const {style, data = [], ItemView, onItemSelected, ...props} = this.props;
     return (
       <FlatList
         style={style.list}
@@ -54,4 +49,6 @@ class SelectionList extends React.PureComponent<PropsType> {
   }
 }
 
-export default connectStyle('GameSelection.SelectionList', styles)(SelectionList);
+export default connectStyle('GameSelection.SelectionList', styles)(
+  SelectionList,
+);

@@ -1,16 +1,6 @@
-import {
-  takeEvery, call, put,
-} from 'redux-saga/effects';
-import {
-  packs,
-  games,
-} from '../../../service';
-import {
-  onChoosePack,
-  onLoadPacks,
-  onLoadGames,
-  watchActions,
-} from '../sagas';
+import {takeEvery, call, put} from 'redux-saga/effects';
+import {packs, games} from '../../../service';
+import {onChoosePack, onLoadPacks, onLoadGames, watchActions} from '../sagas';
 import {
   LOAD_PACKS,
   CHOOSE_PACK,
@@ -20,7 +10,7 @@ import {
   storeGames,
   choosePack,
 } from '../actions';
-import { Pack, Game } from '../types';
+import {Pack, Game} from '../types';
 
 describe('game selection sagas test suite', () => {
   it('on choose pack', () => {

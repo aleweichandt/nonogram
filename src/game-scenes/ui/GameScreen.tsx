@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  Container, Content, Footer,
-} from 'native-base';
-import { GameBoard, GameSelector } from '../../game';
+import {Container, Content, Footer} from 'native-base';
+import {GameBoard, GameSelector} from '../../game';
 
-export type PropsType = {
-}
+export type PropsType = {};
 
 const GameScreen = () => (
   <Container>
     <Content>
-      <GameBoard board={[[]]}/>
+      <GameBoard board={[[]]} />
     </Content>
     <Footer>
       <GameSelector />
