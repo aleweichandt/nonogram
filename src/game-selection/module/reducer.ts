@@ -1,4 +1,4 @@
-import {createReducer} from '../../redux-helpers';
+import {createReducer, HandlerType} from '../../redux-helpers';
 import {STORE_PACKS, CHOOSE_PACK, STORE_GAMES, CHOOSE_GAME} from './actions';
 import {
   StorePacksAction,
@@ -6,7 +6,7 @@ import {
   StoreGamesAction,
   ChooseGameAction,
 } from './actions';
-import {StateType} from './types';
+import {StateType, Pack, Game} from './types';
 
 export const initialState: StateType = {
   currentPack: undefined,
@@ -26,7 +26,7 @@ const onStorePacks = (
   ...state,
   packs: {
     ...state.packs,
-    ...asMap(packs),
+    ...asMap<Pack>(packs),
   },
 });
 const onChoosePack = (
@@ -47,7 +47,7 @@ const onStoreGames = (
   ...state,
   games: {
     ...state.games,
-    ...asMap(games),
+    ...asMap<Game>(games),
   },
 });
 const onChooseGame = (
@@ -61,11 +61,11 @@ const onChooseGame = (
       }
     : state;
 
-const handlers = Object.freeze({
+const handlers: HandlerType<StateType> = {
   [STORE_PACKS]: onStorePacks,
   [CHOOSE_PACK]: onChoosePack,
   [STORE_GAMES]: onStoreGames,
   [CHOOSE_GAME]: onChooseGame,
-});
+};
 
 export default createReducer<StateType>(handlers, initialState);

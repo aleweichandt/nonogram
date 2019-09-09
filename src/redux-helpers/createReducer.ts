@@ -1,14 +1,12 @@
-type Reducer<S> = (state: S, action: {type: string}) => S;
-type HandlerType<S> = {[key: string]: Reducer<S>};
+import {Reducer} from 'redux';
+import {HandlerType, Action} from './types';
 
-function createReducer<State>(
-  handlers: HandlerType<State>,
-  initialState: State,
-): Reducer<State> {
-  // eslint-disable-next-line no-unused-vars
-  const identity = (state: State, action: {type: string}): State => state;
-
-  return (state = initialState, action) => {
+function createReducer<S>(
+  handlers: HandlerType<S>,
+  initialState: S,
+): Reducer<S> {
+  const identity = (state: S): S => state;
+  return (state: S | undefined = initialState, action: Action<any>) => {
     const {[action.type]: handle = identity} = handlers;
     return handle(state, action);
   };

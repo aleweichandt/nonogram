@@ -1,13 +1,14 @@
 import reducer, {initialState} from '../reducer';
 import {initGame, setOption, setTile} from '../actions';
 import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
+import {BoardType, OptionsType, StateType} from '../types';
 
 describe('game reducer test suite', () => {
-  const testBoard = [[B, V], [V, B]];
-  const cleanProgress = [[V, V], [V, V]];
-  const testOptions = [B, V];
+  const testBoard: BoardType = [[B, V], [V, B]];
+  const cleanProgress: BoardType = [[V, V], [V, V]];
+  const testOptions: OptionsType = [B, V];
   it('starts with state', () => {
-    // $FlowFixMe intended
+    // @ts-ignore intended
     expect(reducer(undefined, {})).toEqual(initialState);
   });
   it('initialise game', () => {
@@ -23,7 +24,7 @@ describe('game reducer test suite', () => {
   describe('set option', () => {
     it('valid option', () => {
       const action = setOption(B);
-      const state = {
+      const state: StateType = {
         ...initialState,
         currentOption: V,
         options: [V, B],
@@ -35,7 +36,7 @@ describe('game reducer test suite', () => {
     });
     it('invalid option', () => {
       const action = setOption(B);
-      const state = {
+      const state: StateType = {
         ...initialState,
         currentOption: V,
         options: [V],
@@ -49,7 +50,7 @@ describe('game reducer test suite', () => {
       expect(reducer(initialState, action)).toEqual(initialState);
     });
     it('with board and same option', () => {
-      const state = {
+      const state: StateType = {
         ...initialState,
         board: testBoard,
         currentOption: V,
@@ -58,7 +59,7 @@ describe('game reducer test suite', () => {
       expect(reducer(state, action)).toEqual(state);
     });
     it('with board and diff option', () => {
-      const state = {
+      const state: StateType = {
         ...initialState,
         board: testBoard,
         currentOption: B,

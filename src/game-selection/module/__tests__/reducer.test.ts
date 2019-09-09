@@ -26,7 +26,7 @@ const filledState = {
 
 describe('game selection reducer test suite', () => {
   it('starts with state', () => {
-    // $FlowFixMe intended
+    // @ts-ignore intended
     expect(reducer(undefined, {})).toEqual(initialState);
   });
   describe('store packs', () => {

@@ -8,8 +8,9 @@ import {
   createValueSelector,
 } from '../selectors';
 import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
+import {StateType} from '../types';
 
-const game = {
+const game: StateType = {
   board: [[V, B], [B, V]],
   progress: [[V, V], [B, V]],
   currentOption: B,

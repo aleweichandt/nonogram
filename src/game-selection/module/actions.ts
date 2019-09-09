@@ -1,4 +1,4 @@
-import {ActionWithPayload, ActionWithoutPayload} from '../../redux-helpers';
+import {PayloadAction, Action} from '../../redux-helpers';
 import {PackId, Pack, GameId, Game} from './types';
 
 export const LOAD_PACKS = 'game-selection/LOAD_PACKS';
@@ -8,24 +8,24 @@ export const LOAD_GAMES = 'game-selection/LOAD_GAMES';
 export const STORE_GAMES = 'game-selection/STORE_GAMES';
 export const CHOOSE_GAME = 'game-selection/CHOOSE_GAME';
 
-export type LoadPacksAction = ActionWithoutPayload<typeof LOAD_PACKS>;
-export type StorePacksAction = ActionWithPayload<
+export type LoadPacksAction = Action<typeof LOAD_PACKS>;
+export type StorePacksAction = PayloadAction<
   typeof STORE_PACKS,
   {packs: Pack[]}
 >;
-export type ChoosePackAction = ActionWithPayload<
+export type ChoosePackAction = PayloadAction<
   typeof CHOOSE_PACK,
   {packId: PackId}
 >;
-export type LoadGamesAction = ActionWithPayload<
+export type LoadGamesAction = PayloadAction<
   typeof LOAD_GAMES,
   {packId: PackId}
 >;
-export type StoreGamesAction = ActionWithPayload<
+export type StoreGamesAction = PayloadAction<
   typeof STORE_GAMES,
   {games: Game[]}
 >;
-export type ChooseGameAction = ActionWithPayload<
+export type ChooseGameAction = PayloadAction<
   typeof CHOOSE_GAME,
   {gameId: GameId}
 >;

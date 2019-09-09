@@ -1,5 +1,5 @@
 import {DEFAULT_OPTIONS, OPTION_VOID, OPTION_BLACK} from './const';
-import {ActionWithPayload, ActionWithoutPayload} from '../../redux-helpers';
+import {PayloadAction, Action} from '../../redux-helpers';
 import {OptionType} from './types';
 
 export const INIT_GAME = 'game/INIT_GAME';
@@ -8,7 +8,7 @@ export const SET_TILE = 'game/SET_TILE';
 export const CHECK_STATE = 'game/CHECK_STATE';
 export const END_GAME = 'game/END_GAME';
 
-export type InitGameAction = ActionWithPayload<
+export type InitGameAction = PayloadAction<
   typeof INIT_GAME,
   {
     board: OptionType[][];
@@ -16,21 +16,21 @@ export type InitGameAction = ActionWithPayload<
     options: OptionType[];
   }
 >;
-export type SetOptionAction = ActionWithPayload<
+export type SetOptionAction = PayloadAction<
   typeof SET_OPTION,
   {
     option: OptionType;
   }
 >;
-export type SetTyleAction = ActionWithPayload<
+export type SetTyleAction = PayloadAction<
   typeof SET_TILE,
   {
     row: number;
     col: number;
   }
 >;
-export type CheckStateAction = ActionWithoutPayload<typeof CHECK_STATE>;
-export type EndGameAction = ActionWithoutPayload<typeof END_GAME>;
+export type CheckStateAction = Action<typeof CHECK_STATE>;
+export type EndGameAction = Action<typeof END_GAME>;
 /**
  - init game
  - set_tile -> check_state -> set_state [-> end_game]

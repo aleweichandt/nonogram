@@ -13,6 +13,6 @@ export const isValid = (
   return matches || boardOption === progressOption;
 };
 
-export const clearValue = () => OPTION_VOID;
+export const clearValue = (): OptionType => OPTION_VOID;
 
 export const shouldShowInfo = (option: OptionType) => option !== OPTION_VOID;

@@ -51,12 +51,9 @@ type CountType = {
 
 export const genGetLineInfo = (
   shouldShowInfo: (value: OptionType) => boolean,
-) => (
-  line: LineType,
-  progress: LineType = [],
-  // @ts-ignore bad reduce definition
-): LineInfoType[] =>
+) => (line: LineType, progress: LineType = []): LineInfoType[] =>
   [...line, OPTION_VOID].reduce<CountType>(
+    // @ts-ignore bad reduce definition
     ({result, last}: CountType, next: OptionType, i: number) => {
       const prog = progress[i] || OPTION_VOID;
       const tagged = prog === next;

@@ -1,5 +1,12 @@
 import {createReducer} from '../../redux-helpers';
-import {INIT_GAME, SET_OPTION, SET_TILE} from './actions';
+import {
+  INIT_GAME,
+  SET_OPTION,
+  SET_TILE,
+  SetTyleAction,
+  SetOptionAction,
+  InitGameAction,
+} from './actions';
 import {DEFAULT_OPTIONS, OPTION_BLACK} from './const';
 import {clearBoard, updateBoard} from './utils';
 import {StateType} from './types';
@@ -13,7 +20,7 @@ export const initialState: StateType = {
 
 const onInitGame = (
   state: StateType,
-  {payload: {board, options, currentOption}},
+  {payload: {board, options, currentOption}}: InitGameAction,
 ): StateType => ({
   ...state,
   board,
@@ -22,7 +29,10 @@ const onInitGame = (
   progress: clearBoard(board),
 });
 
-const onSetOption = (state: StateType, {payload: {option}}): StateType =>
+const onSetOption = (
+  state: StateType,
+  {payload: {option}}: SetOptionAction,
+): StateType =>
   state.options.includes(option)
     ? {
         ...state,
@@ -30,7 +40,10 @@ const onSetOption = (state: StateType, {payload: {option}}): StateType =>
       }
     : state;
 
-const onSetTile = (state: StateType, {payload: {col, row}}): StateType => ({
+const onSetTile = (
+  state: StateType,
+  {payload: {col, row}}: SetTyleAction,
+): StateType => ({
   ...state,
   progress: updateBoard(state.progress, col, row, state.currentOption),
 });

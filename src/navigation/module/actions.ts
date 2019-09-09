@@ -1,6 +1,6 @@
 import {NavigationActions, StackActions} from 'react-navigation';
 import {NavigationProp} from 'react-navigation';
-import {ActionWithPayload} from '../../redux-helpers';
+import {PayloadAction} from '../../redux-helpers';
 
 export const {
   BACK,
@@ -30,7 +30,7 @@ export const {
 // } = DrawerActions;
 
 export const SET_NAVIGATION = 'NAVIGATION/SET_NAVIGATION';
-export type SetNavigationAction = ActionWithPayload<
+export type SetNavigationAction = PayloadAction<
   typeof SET_NAVIGATION,
   NavigationProp<{}>
 >;
