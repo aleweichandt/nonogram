@@ -1,5 +1,8 @@
-import {NavigationActions, StackActions} from 'react-navigation';
-import {NavigationProp} from 'react-navigation';
+import {
+  NavigationActions,
+  StackActions,
+  NavigationContainerComponent,
+} from 'react-navigation';
 import {PayloadAction} from '../../redux-helpers';
 
 export const {
@@ -32,12 +35,12 @@ export const {
 export const SET_NAVIGATION = 'NAVIGATION/SET_NAVIGATION';
 export type SetNavigationAction = PayloadAction<
   typeof SET_NAVIGATION,
-  NavigationProp<{}>
+  NavigationContainerComponent
 >;
 export type ActionType = typeof SET_NAVIGATION;
 
 export const setNavigation = (
-  payload: NavigationProp<{}>,
+  payload: NavigationContainerComponent,
 ): SetNavigationAction => ({
   type: SET_NAVIGATION,
   payload,

@@ -1,13 +1,18 @@
 import React from 'react';
 import {Grid, Col, Row} from 'native-base';
-import UILineInfo, {PropsType as LineInfoType} from './LineInfo';
-import UITile, {PropsType as TileType} from './Tile';
+import UILineInfo from './LineInfo';
+import UITile from './Tile';
 import {BoardType, OptionType} from '../module';
+
+type GridProps = {
+  row?: number;
+  column?: number;
+};
 
 export type PropsType = {
   board: BoardType;
-  Tile?: React.ComponentType<TileType>;
-  LineInfo?: React.ComponentType<LineInfoType>;
+  Tile?: React.ComponentType<GridProps>;
+  LineInfo?: React.ComponentType<GridProps>;
 };
 
 const Board = ({board, Tile = UITile, LineInfo = UILineInfo}: PropsType) => (
@@ -24,7 +29,6 @@ const Board = ({board, Tile = UITile, LineInfo = UILineInfo}: PropsType) => (
         <Row key={rowId}>
           <LineInfo key={rowId} row={rowId} />
           {row.map((item: OptionType, colId: number) => (
-            // @ts-ignore TODO container props
             <Tile key={colId} column={colId} row={rowId} />
           ))}
         </Row>

@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
+import {NavigationContainerComponent} from 'react-navigation';
 import AppContainer from '../ui';
 import {setNavigation} from '../../navigation/module';
 
 const mapDispatchToProps = (dispatch: any) => ({
-  // TODO fix types
-  setRef: (navigation: any) => {
+  setRef: (navigation: NavigationContainerComponent | null) => {
     if (navigation) {
       dispatch(setNavigation(navigation));
     }
