@@ -3,11 +3,7 @@ import {Grid, Col, Row} from 'native-base';
 import UILineInfo from './LineInfo';
 import UITile from './Tile';
 import {BoardType, OptionType} from '../module';
-
-type GridProps = {
-  row?: number;
-  column?: number;
-};
+import {GridProps} from '../types';
 
 type Props = {
   board: BoardType;

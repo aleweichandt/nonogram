@@ -4,9 +4,9 @@ import {connectStyle} from '../../theme';
 
 type DataId = string | {id: string};
 type Props = {
-  data?: DataId[];
+  data: DataId[];
   ItemView: React.ComponentType<{id: string}>;
-  onItemSelected?: (id: string) => void;
+  onItemSelected: (id: string) => void;
   style: {list: {}};
 };
 
@@ -24,7 +24,7 @@ class SelectionList extends React.PureComponent<Props> {
   };
 
   renderItem = ({item}: {item: DataId}) => {
-    const {ItemView, onItemSelected = () => {}} = this.props;
+    const {ItemView, onItemSelected} = this.props;
     const id = keyExtractor(item);
     return (
       <TouchableOpacity key={id} onPress={() => onItemSelected(id)}>
@@ -35,7 +35,7 @@ class SelectionList extends React.PureComponent<Props> {
 
   render() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {style, data = [], ItemView, onItemSelected, ...props} = this.props;
+    const {style, data, ItemView, onItemSelected, ...props} = this.props;
     return (
       <FlatList
         style={style.list}

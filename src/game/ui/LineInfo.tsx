@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text} from 'native-base';
 import {connectStyle} from '../../theme';
-// import UIOption from './Option';
 import {LineInfoType, InfoType} from '../module';
+import {GridProps} from '../types';
 
 const styles = {
   'NativeBase.ViewNB': {
@@ -26,14 +26,11 @@ const styles = {
   },
 };
 
-type Props = {
-  info?: LineInfoType;
-  row?: number;
-  column?: number;
-  // Option?: React.ComponentProps<typeof UIOption>,
+type Props = GridProps & {
+  info: LineInfoType;
 };
 
-const LineInfo: React.FC<Props> = ({info = [], row}) => (
+const LineInfo: React.FC<Props> = ({info, row}) => (
   // @ts-ignore nativebase definition
   <View vertical={row === undefined}>
     {info.map(({count, complete}: InfoType) => (

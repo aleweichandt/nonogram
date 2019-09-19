@@ -3,7 +3,7 @@ import {StyleProvider, Root} from 'native-base';
 import theme from '../styles';
 
 type Props = {
-  children?: React.ReactNodeArray[] | React.ReactNode;
+  children: React.ReactNodeArray[] | React.ReactNode;
 };
 
 const ThemeProvider: React.FC<Props> = ({children}) => (

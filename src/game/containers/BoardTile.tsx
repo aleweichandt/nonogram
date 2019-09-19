@@ -2,18 +2,17 @@ import {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import {Tile} from '../ui';
 import {setTile, createValueSelector, StateWithGameType} from '../module';
+import {GridProps} from '../types';
 
 const getValue = createValueSelector();
 
-type Props = {
-  row: number | undefined;
-  column: number | undefined;
-};
-
-const mapStateToProps = (state: StateWithGameType, props: Props) => ({
+const mapStateToProps = (state: StateWithGameType, props: GridProps) => ({
   value: getValue(state, props),
 });
-const mapDispatchToProps = (dispatch: Dispatch<any>, {column, row}: Props) => ({
+const mapDispatchToProps = (
+  dispatch: Dispatch<any>,
+  {column, row}: GridProps,
+) => ({
   onPress: () => dispatch(setTile(column, row)),
 });
 

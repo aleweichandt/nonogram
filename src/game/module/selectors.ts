@@ -1,11 +1,10 @@
 import {createSelector} from 'reselect';
 import {getCol, getRow, getLineInfo, getValue} from './utils';
 import {StateType, StateWithGameType, BoardType} from './types';
-
-type Props = {row?: number; column?: number};
+import {GridProps} from '../types';
 
 const gameSelector = ({game}: StateWithGameType): StateType => game;
-const propsSelector = (state: StateWithGameType, props: Props) => props;
+const propsSelector = (state: StateWithGameType, props: GridProps) => props;
 
 export const getBoard = createSelector(
   gameSelector,
@@ -30,14 +29,14 @@ export const getProgress = createSelector(
 export const createValueSelector = () =>
   createSelector(
     [getProgress, propsSelector],
-    (progress: BoardType, {row = -1, column = -1}: Props) =>
+    (progress: BoardType, {row = -1, column = -1}: GridProps) =>
       getValue(progress, row, column),
   );
 
 export const createRowInfo = () =>
   createSelector(
     [getBoard, getProgress, propsSelector],
-    (board: BoardType, progress: BoardType, {row = -1}: Props) => {
+    (board: BoardType, progress: BoardType, {row = -1}: GridProps) => {
       const rowRef = getRow(board, row);
       const rowProgress = getRow(progress, row);
       return getLineInfo(rowRef, rowProgress);
@@ -47,7 +46,7 @@ export const createRowInfo = () =>
 export const createColInfo = () =>
   createSelector(
     [getBoard, getProgress, propsSelector],
-    (board: BoardType, progress: BoardType, {column = -1}: Props) => {
+    (board: BoardType, progress: BoardType, {column = -1}: GridProps) => {
       const colRef = getCol(board, column);
       const colProgress = getCol(progress, column);
       return getLineInfo(colRef, colProgress);

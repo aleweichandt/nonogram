@@ -3,7 +3,7 @@ import {Button} from 'native-base';
 import {connectStyle} from '../../theme';
 import UIOption from './Option';
 import {OPTION_VOID} from '../module';
-import {OptionType} from '../module';
+import {SelectorProps} from '../types';
 
 const styles = {
   'NativeBase.Button': {
@@ -22,19 +22,13 @@ const styles = {
   },
 };
 
-type Props = {
-  value?: OptionType;
-  selected?: boolean;
-  onPress?: () => void;
-  Option?: React.ComponentProps<typeof UIOption>;
+type Props = SelectorProps & {
+  selected: boolean;
+  onPress: () => void;
+  Option: React.ComponentProps<typeof UIOption>;
 };
 
-const Tile: React.FC<Props> = ({
-  value = OPTION_VOID,
-  selected = false,
-  onPress = () => {},
-  Option = UIOption,
-}) => (
+const Tile: React.FC<Props> = ({value, selected, onPress, Option}) => (
   // @ts-ignore nativebase definition
   <Button selected={selected} onPress={onPress}>
     <Option>{value}</Option>

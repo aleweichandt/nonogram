@@ -6,7 +6,7 @@ import {OptionsType, OptionType} from '../module';
 
 type Props = {
   options: OptionsType;
-  Tile?: React.ComponentProps<typeof UITile>;
+  Tile: React.ComponentProps<typeof UITile>;
 };
 
 const styles = {
@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-const Selector: React.FC<Props> = ({options, Tile = UITile}) => (
+const Selector: React.FC<Props> = ({options, Tile}) => (
   <View padder>
     {options.map((item: OptionType, index: number) => (
       <Tile key={index} value={item} />
