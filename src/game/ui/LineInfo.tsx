@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text} from 'native-base';
 import {connectStyle} from '../../theme';
-// import UIOption, {  PropsType as OptionPropsType } from './Option';
+// import UIOption from './Option';
 import {LineInfoType, InfoType} from '../module';
 
 const styles = {
@@ -26,14 +26,14 @@ const styles = {
   },
 };
 
-export type PropsType = {
+type Props = {
   info?: LineInfoType;
   row?: number;
-  column?: number; // eslint-disable-line react/no-unused-prop-types
-  // Option?: React$ComponentType<OptionPropsType>,
+  column?: number;
+  // Option?: React.ComponentProps<typeof UIOption>,
 };
 
-const LineInfo = ({info = [], row}: PropsType) => (
+const LineInfo: React.FC<Props> = ({info = [], row}) => (
   // @ts-ignore nativebase definition
   <View vertical={row === undefined}>
     {info.map(({count, complete}: InfoType) => (

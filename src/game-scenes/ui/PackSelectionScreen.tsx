@@ -2,9 +2,9 @@ import React from 'react';
 import {Container} from 'native-base';
 import {PackSelection} from '../../game-selection';
 
-export type PropsType = {};
+type Props = {};
 
-const PackSelectionScreen = () => (
+const PackSelectionScreen: React.FC<Props> = () => (
   <Container>
     <PackSelection />
   </Container>

@@ -5,7 +5,7 @@ import {ThemeProvider} from './theme';
 import store from './store';
 import AppContainer from './router';
 
-const App = () => (
+const App: React.FC<{}> = () => (
   <Provider store={store}>
     <ThemeProvider>
       <AppContainer />

@@ -1,4 +1,5 @@
-import {connect, MapDispatchToPropsFunction} from 'react-redux';
+import {Dispatch} from 'react';
+import {connect} from 'react-redux';
 import {PackDetail} from '../ui';
 import PackGame from './PackGame';
 import {getCurrentPack, chooseGame} from '../module';
@@ -8,7 +9,7 @@ const mapStateToProps = (state: StateWithGameSelectionType) => ({
   ...(getCurrentPack(state) || {}),
   Game: PackGame,
 });
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onGameSelected: (id: GameId) => dispatch(chooseGame(id)),
 });
 

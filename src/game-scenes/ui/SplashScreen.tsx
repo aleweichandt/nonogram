@@ -1,11 +1,11 @@
 import React from 'react';
 import {Container, Content, Button, Text} from 'native-base';
 
-export type PropsType = {
+type Props = {
   next: () => void;
 };
 
-const SplashScreen = ({next}: PropsType) => (
+const SplashScreen: React.FC<Props> = ({next}) => (
   <Container>
     <Content padder>
       <Button onPress={next}>

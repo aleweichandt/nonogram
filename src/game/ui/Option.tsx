@@ -4,7 +4,7 @@ import {connectStyle} from '../../theme';
 import {OPTION_BLACK, OPTION_BLOCKED} from '../module';
 import {OptionType} from '../module';
 
-export type PropsType = {
+type Props = {
   children: OptionType;
 };
 
@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-const BaseOption = ({children}: PropsType) => (
+const BaseOption: React.FC<Props> = ({children}) => (
   // @ts-ignore nativebase definition
   <View black={OPTION_BLACK === children}>
     {OPTION_BLOCKED === children ? <Text>X</Text> : null}

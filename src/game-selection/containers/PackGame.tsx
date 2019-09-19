@@ -3,10 +3,9 @@ import {GameItem} from '../ui';
 import {getGame} from '../module';
 import {GameId, StateWithGameSelectionType} from '../module';
 
-const mapStateToProps = (
-  state: StateWithGameSelectionType,
-  props: {id: GameId},
-) => ({
+type Props = {id: GameId};
+
+const mapStateToProps = (state: StateWithGameSelectionType, props: Props) => ({
   ...(getGame(state, props) || {}),
 });
 

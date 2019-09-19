@@ -2,9 +2,9 @@ import React from 'react';
 import {Container} from 'native-base';
 import {GameSelection} from '../../game-selection';
 
-export type PropsType = {};
+type Props = {};
 
-const GameSelectionScreen = () => (
+const GameSelectionScreen: React.FC<Props> = () => (
   <Container>
     <GameSelection />
   </Container>

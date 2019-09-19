@@ -1,12 +1,12 @@
 import React from 'react';
 import {View} from 'native-base';
 import {connectStyle} from '../../theme';
-import UITile, {PropsType as TileType} from './Tile';
+import UITile from './Tile';
 import {OptionsType, OptionType} from '../module';
 
-export type PropsType = {
+type Props = {
   options: OptionsType;
-  Tile?: React.ComponentType<TileType>;
+  Tile?: React.ComponentProps<typeof UITile>;
 };
 
 const styles = {
@@ -15,10 +15,9 @@ const styles = {
   },
 };
 
-const Selector = ({options, Tile = UITile}: PropsType) => (
+const Selector: React.FC<Props> = ({options, Tile = UITile}) => (
   <View padder>
     {options.map((item: OptionType, index: number) => (
-      // eslint-disable-next-line react/no-array-index-key
       <Tile key={index} value={item} />
     ))}
   </View>

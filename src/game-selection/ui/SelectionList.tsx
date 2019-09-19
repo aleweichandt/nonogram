@@ -2,9 +2,9 @@ import React from 'react';
 import {FlatList, TouchableOpacity} from 'react-native';
 import {connectStyle} from '../../theme';
 
-type WithIdType = string & {id: string};
-type PropsType = {
-  data?: WithIdType[];
+type DataId = string | {id: string};
+type Props = {
+  data?: DataId[];
   ItemView: React.ComponentType<{id: string}>;
   onItemSelected?: (id: string) => void;
   style: {list: {}};
@@ -14,18 +14,17 @@ const styles = {
   list: {},
 };
 
-const keyExtractor = (elem: WithIdType): string =>
+const keyExtractor = (elem: DataId): string =>
   typeof elem === 'string' ? elem : elem.id;
 
-class SelectionList extends React.PureComponent<PropsType> {
+class SelectionList extends React.PureComponent<Props> {
   static defaultProps = {
     data: [],
     onItemSelected: () => {},
   };
 
-  renderItem = ({item}: {item: WithIdType}) => {
-    // eslint-disable-next-line no-unused-vars
-    const {ItemView, onItemSelected = (id: string) => {}} = this.props;
+  renderItem = ({item}: {item: DataId}) => {
+    const {ItemView, onItemSelected = () => {}} = this.props;
     const id = keyExtractor(item);
     return (
       <TouchableOpacity key={id} onPress={() => onItemSelected(id)}>
@@ -35,7 +34,7 @@ class SelectionList extends React.PureComponent<PropsType> {
   };
 
   render() {
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {style, data = [], ItemView, onItemSelected, ...props} = this.props;
     return (
       <FlatList

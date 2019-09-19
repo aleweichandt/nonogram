@@ -3,7 +3,7 @@ import {Card, CardItem, Left, Body, Thumbnail, Text} from 'native-base';
 import {connectStyle} from '../../theme';
 import {Game} from '../module';
 
-export type PropsType = Game & {};
+type Props = Game & {};
 
 const styles = {
   'NativeBase.Card': {
@@ -20,7 +20,7 @@ const styles = {
   },
 };
 
-const GameItem = ({title, thumbnailUrl}: PropsType) =>
+const GameItem: React.FC<Props> = ({title, thumbnailUrl}) =>
   title ? (
     <Card>
       <CardItem>

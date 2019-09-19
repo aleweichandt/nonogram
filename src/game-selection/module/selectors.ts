@@ -1,17 +1,10 @@
 import {createSelector} from 'reselect';
-import {
-  StateType,
-  StateWithGameSelectionType,
-  Game,
-  Pack,
-  GameId,
-  PackId,
-} from './types';
+import {StateType, StateWithGameSelectionType, GameId, PackId} from './types';
 
-type GameContainerPropsType = {
+type GameContainerProps = {
   id: GameId;
 };
-type PackContainerPropsType = {
+type PackContainerProps = {
   id: PackId;
 };
 
@@ -21,13 +14,13 @@ const gameSelectionSelector = ({
 
 const packPropsSelector = (
   state: StateWithGameSelectionType,
-  props: PackContainerPropsType,
-): PackContainerPropsType => props;
+  props: PackContainerProps,
+): PackContainerProps => props;
 
 const gamePropsSelector = (
   state: StateWithGameSelectionType,
-  props: GameContainerPropsType,
-): GameContainerPropsType => props;
+  props: GameContainerProps,
+): GameContainerProps => props;
 
 export const getPacks = createSelector(
   gameSelectionSelector,
@@ -61,7 +54,7 @@ export const getCurrentGame = createSelector(
 
 export const getPack = createSelector(
   [gameSelectionSelector, packPropsSelector],
-  ({packs}: StateType, {id}: PackContainerPropsType) => {
+  ({packs}: StateType, {id}: PackContainerProps) => {
     if (packs && id) {
       return packs[id];
     }
@@ -71,7 +64,7 @@ export const getPack = createSelector(
 
 export const getGame = createSelector(
   [gameSelectionSelector, gamePropsSelector],
-  ({games}: StateType, {id}: GameContainerPropsType) => {
+  ({games}: StateType, {id}: GameContainerProps) => {
     if (games && id) {
       return games[id];
     }

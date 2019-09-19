@@ -2,9 +2,9 @@ import React from 'react';
 import {Container, Content, Footer} from 'native-base';
 import {GameBoard, GameSelector} from '../../game';
 
-export type PropsType = {};
+type Props = {};
 
-const GameScreen = () => (
+const GameScreen: React.FC<Props> = () => (
   <Container>
     <Content>
       <GameBoard board={[[]]} />

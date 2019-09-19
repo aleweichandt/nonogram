@@ -9,14 +9,17 @@ type GridProps = {
   column?: number;
 };
 
-export type PropsType = {
+type Props = {
   board: BoardType;
   Tile?: React.ComponentType<GridProps>;
   LineInfo?: React.ComponentType<GridProps>;
 };
 
-const Board = ({board, Tile = UITile, LineInfo = UILineInfo}: PropsType) => (
-  /* eslint-disable react/no-array-index-key */
+const Board: React.FC<Props> = ({
+  board,
+  Tile = UITile,
+  LineInfo = UILineInfo,
+}) => (
   <Grid>
     <Col>
       <Row>
@@ -35,7 +38,6 @@ const Board = ({board, Tile = UITile, LineInfo = UILineInfo}: PropsType) => (
       ))}
     </Col>
   </Grid>
-  /* eslint-enable react/no-array-index-key */
 );
 Board.defaultProps = {
   Tile: UITile,

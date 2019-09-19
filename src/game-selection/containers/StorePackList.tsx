@@ -1,3 +1,4 @@
+import {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import {SelectionList} from '../ui';
 import StorePack from './StorePack';
@@ -8,7 +9,7 @@ const mapStateToProps = (state: StateWithGameSelectionType) => ({
   data: Object.keys(getPacks(state)),
   ItemView: StorePack,
 });
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onItemSelected: (id: PackId) => dispatch(choosePack(id)),
 });
 

@@ -3,10 +3,9 @@ import {PackItem} from '../ui';
 import {getPack} from '../module';
 import {StateWithGameSelectionType, PackId} from '../module';
 
-const mapStateToProps = (
-  state: StateWithGameSelectionType,
-  props: {id: PackId},
-) => ({
+type Props = {id: PackId};
+
+const mapStateToProps = (state: StateWithGameSelectionType, props: Props) => ({
   ...(getPack(state, props) || {}),
 });
 

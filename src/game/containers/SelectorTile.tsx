@@ -1,3 +1,4 @@
+import {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import {Tile} from '../ui';
 import {
@@ -7,14 +8,14 @@ import {
   OptionType,
 } from '../module';
 
-type PropsType = {
+type Props = {
   value: OptionType;
 };
 
-const mapStateToProps = (state: StateWithGameType, {value}: PropsType) => ({
+const mapStateToProps = (state: StateWithGameType, {value}: Props) => ({
   selected: getCurrentOption(state) === value,
 });
-const mapDispatchToProps = (dispatch: any, {value}: PropsType) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>, {value}: Props) => ({
   onPress: () => dispatch(setOption(value)),
 });
 

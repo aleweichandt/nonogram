@@ -5,12 +5,12 @@ import {createColInfo, createRowInfo, StateWithGameType} from '../module';
 const getRowInfo = createRowInfo();
 const getColInfo = createColInfo();
 
-type PropsType = {
+type Props = {
   row: number | undefined;
   column: number | undefined;
 };
 
-const mapStateToProps = (state: StateWithGameType, props: PropsType) => ({
+const mapStateToProps = (state: StateWithGameType, props: Props) => ({
   info:
     props.row !== undefined
       ? getRowInfo(state, props)

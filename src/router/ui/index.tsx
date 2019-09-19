@@ -7,11 +7,9 @@ import NavigatorRouter from './root';
 
 const AppContainer = createAppContainer(NavigatorRouter);
 
-export type PropsType = {
+type Props = {
   setRef: (ref: NavigationContainerComponent | null) => void;
 };
-const AppRouter: React.FC<PropsType> = ({setRef}: PropsType) => (
-  <AppContainer ref={setRef} />
-);
+const AppRouter: React.FC<Props> = ({setRef}) => <AppContainer ref={setRef} />;
 
 export default AppRouter;

@@ -4,7 +4,7 @@ import {Card, CardItem, Body, Text, View} from 'native-base';
 import {connectStyle} from '../../theme';
 import {Pack} from '../module';
 
-type PropsType = Pack & {
+type Props = Pack & {
   style: {background: {}; title: {}; image: {}};
 };
 
@@ -40,7 +40,7 @@ const styles = {
   },
 };
 
-const PackItem = ({style, title, description, thumbnailUrl}: PropsType) =>
+const PackItem: React.FC<Props> = ({style, title, description, thumbnailUrl}) =>
   title ? (
     <Card>
       <CardItem>

@@ -2,13 +2,13 @@ import React from 'react';
 import {Text, Content, View} from 'native-base';
 import {connectStyle} from '../../theme';
 import {ImageBackground} from 'react-native';
-import GameView, {PropsType as GamePropsType} from './GameItem';
+import GameView from './GameItem';
 import SelectionList from './SelectionList';
 import {Pack, GameId} from '../module';
 
-type PropsType = Pack & {
+type Props = Pack & {
   style: {background: {}; image: {}; title: {}};
-  Game: React.PureComponent<GamePropsType>;
+  Game: typeof GameView;
   onGameSelected: (id: GameId) => void;
 };
 
@@ -40,7 +40,7 @@ const styles = {
   },
 };
 
-class PackDetail extends React.PureComponent<PropsType> {
+class PackDetail extends React.PureComponent<Props> {
   static defaultProps = {
     Game: GameView,
   };
