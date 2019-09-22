@@ -2,10 +2,10 @@ import React from 'react';
 import {View} from 'native-base';
 import {connectStyle} from '../../theme';
 import UITile from './Tile';
-import {OptionsType, OptionType} from '../module';
+import {Options} from '../module';
 
 type Props = {
-  options: OptionsType;
+  options: Options<any>;
   Tile: React.ComponentProps<typeof UITile>;
 };
 
@@ -17,7 +17,7 @@ const styles = {
 
 const Selector: React.FC<Props> = ({options, Tile}) => (
   <View padder>
-    {options.map((item: OptionType, index: number) => (
+    {options.map((item: any, index: number) => (
       <Tile key={index} value={item} />
     ))}
   </View>

@@ -18,12 +18,8 @@ Object {
     "board": Array [
       Array [],
     ],
-    "currentOption": "game/OPTION_BLACK",
-    "options": Array [
-      "game/OPTION_VOID",
-      "game/OPTION_BLOCKED",
-      "game/OPTION_BLACK",
-    ],
+    "options": Array [],
+    "voidOption": undefined,
   },
   "type": "game/INIT_GAME",
 }
@@ -34,37 +30,28 @@ Object {
   "payload": Object {
     "board": Array [
       Array [
-        "game/OPTION_BLACK",
-        "game/OPTION_VOID",
+        "B",
+        "V",
       ],
       Array [
-        "game/OPTION_VOID",
-        "game/OPTION_BLACK",
+        "V",
+        "B",
       ],
     ],
-    "currentOption": "game/OPTION_VOID",
     "options": Array [
-      "game/OPTION_BLACK",
-      "game/OPTION_VOID",
+      "B",
+      "V",
     ],
+    "voidOption": "V",
   },
   "type": "game/INIT_GAME",
-}
-`;
-
-exports[`game actions test suite set option default params 1`] = `
-Object {
-  "payload": Object {
-    "option": "game/OPTION_VOID",
-  },
-  "type": "game/SET_OPTION",
 }
 `;
 
 exports[`game actions test suite set option with params 1`] = `
 Object {
   "payload": Object {
-    "option": "game/OPTION_BLACK",
+    "option": "B",
   },
   "type": "game/SET_OPTION",
 }

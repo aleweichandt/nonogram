@@ -16,7 +16,7 @@ export type Pack = {
   backgroundUrl: string;
 };
 
-export type StateType = {
+export type State = {
   currentPack?: PackId;
   currentGame?: GameId;
   packs: {[PackId: string]: Pack | undefined};
@@ -24,5 +24,5 @@ export type StateType = {
 };
 
 export type StateWithGameSelectionType = {
-  gameSelection: StateType;
+  gameSelection: State;
 };

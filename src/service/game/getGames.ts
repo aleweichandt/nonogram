@@ -2,10 +2,10 @@ import {
   OPTION_VOID as V,
   OPTION_BLACK as B,
   OPTION_BLOCKED as BL,
-  BoardType,
-} from '../../game';
+  ColoredBoard,
+} from '../../nonogram';
 
-const TEST_BOARD: BoardType = [[V, B, V], [B, V, B], [B, B, B]];
+const TEST_BOARD: ColoredBoard = [[V, B, V], [B, V, B], [B, B, B]];
 
 // TODO remove mock
 const testGames = [
@@ -16,11 +16,12 @@ const testGames = [
     boardData: JSON.stringify({
       options: [V, B, BL],
       board: TEST_BOARD,
+      voidOption: V,
     }),
   },
 ];
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getGames(packId: string): Promise<Array<{}>> {
   return new Promise(resolve => {
     setTimeout(() => {

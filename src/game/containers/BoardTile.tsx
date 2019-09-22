@@ -1,12 +1,12 @@
 import {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import {Tile} from '../ui';
-import {setTile, createValueSelector, StateWithGameType} from '../module';
+import {setTile, createValueSelector, StateWithBoard} from '../module';
 import {GridProps} from '../types';
 
 const getValue = createValueSelector();
 
-const mapStateToProps = (state: StateWithGameType, props: GridProps) => ({
+const mapStateToProps = (state: StateWithBoard<any>, props: GridProps) => ({
   value: getValue(state, props),
 });
 const mapDispatchToProps = (

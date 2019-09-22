@@ -1,12 +1,15 @@
 import {connect} from 'react-redux';
-import {LineInfo} from '../ui';
-import {createColInfo, createRowInfo, StateWithGameType} from '../module';
-import {GridProps} from '../types';
+import {StateWithBoard, GridProps} from '../../game';
+import {createColInfo, createRowInfo, ColoredOption} from '../module';
+import {Info} from '../ui';
 
 const getRowInfo = createRowInfo();
 const getColInfo = createColInfo();
 
-const mapStateToProps = (state: StateWithGameType, props: GridProps) => ({
+const mapStateToProps = (
+  state: StateWithBoard<ColoredOption>,
+  props: GridProps,
+) => ({
   info:
     props.row !== undefined
       ? getRowInfo(state, props)
@@ -16,4 +19,4 @@ const mapStateToProps = (state: StateWithGameType, props: GridProps) => ({
 export default connect(
   mapStateToProps,
   undefined,
-)(LineInfo);
+)(Info);

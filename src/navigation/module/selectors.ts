@@ -1,11 +1,10 @@
 import {createSelector} from 'reselect';
 import {NavigationDispatch} from 'react-navigation';
-import {StateType, StateWithNavigationType} from './types';
+import {State, StateWithNavigationType} from './types';
 
-const getNavigationState = ({navigation}: StateWithNavigationType): StateType =>
+const getNavigationState = ({navigation}: StateWithNavigationType): State =>
   navigation;
 
-// eslint-disable-next-line import/prefer-default-export
 export const getDispatcher: (
   state: StateWithNavigationType,
 ) => NavigationDispatch | undefined = createSelector(

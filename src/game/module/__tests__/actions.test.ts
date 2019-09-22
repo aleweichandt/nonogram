@@ -1,10 +1,14 @@
 import {initGame, setOption, setTile, checkState, endGame} from '../actions';
-import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
-import {BoardType, OptionsType} from '../types';
+import {Board, Options} from '../types';
+
+const B = 'B';
+const V = 'V';
+type Option = typeof B | typeof V;
 
 describe('game actions test suite', () => {
-  const testBoard: BoardType = [[B, V], [V, B]];
-  const testOptions: OptionsType = [B, V];
+  const testBoard: Board<Option> = [[B, V], [V, B]];
+  const testOptions: Options<Option> = [B, V];
+
   describe('init game', () => {
     it('default params', () => {
       expect(initGame()).toMatchSnapshot();
@@ -14,9 +18,6 @@ describe('game actions test suite', () => {
     });
   });
   describe('set option', () => {
-    it('default params', () => {
-      expect(setOption()).toMatchSnapshot();
-    });
     it('with params', () => {
       expect(setOption(B)).toMatchSnapshot();
     });

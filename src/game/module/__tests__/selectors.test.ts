@@ -3,47 +3,36 @@ import {
   getCurrentOption,
   getOptions,
   getProgress,
-  createColInfo,
-  createRowInfo,
   createValueSelector,
 } from '../selectors';
-import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
-import {StateType} from '../types';
+import {State, StateWithBoard} from '../types';
 
-const game: StateType = {
+const B = 'B';
+const V = 'V';
+type Option = typeof B | typeof V;
+
+const board: State<Option> = {
   board: [[V, B], [B, V]],
   progress: [[V, V], [B, V]],
   currentOption: B,
   options: [V, B],
 };
-const mockState = {
-  game,
+const mockState: StateWithBoard<Option> = {
+  board,
 };
 
 describe('game selectors test suite', () => {
   it('get board', () => {
-    expect(getBoard(mockState)).toEqual(game.board);
+    expect(getBoard(mockState)).toEqual(board.board);
   });
   it('get progress', () => {
-    expect(getProgress(mockState)).toEqual(game.progress);
+    expect(getProgress(mockState)).toEqual(board.progress);
   });
   it('get options', () => {
-    expect(getOptions(mockState)).toEqual(game.options);
+    expect(getOptions(mockState)).toEqual(board.options);
   });
   it('get current option', () => {
-    expect(getCurrentOption(mockState)).toEqual(game.currentOption);
-  });
-  it('get row info', () => {
-    const getRowInfo = createRowInfo();
-    expect(getRowInfo(mockState, {row: 0})).toEqual([
-      {option: B, count: 1, complete: false},
-    ]);
-  });
-  it('get col info', () => {
-    const getColInfo = createColInfo();
-    expect(getColInfo(mockState, {column: 0})).toEqual([
-      {option: B, count: 1, complete: true},
-    ]);
+    expect(getCurrentOption(mockState)).toEqual(board.currentOption);
   });
   it('get progress value selector', () => {
     const getValue = createValueSelector();

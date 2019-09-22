@@ -15,9 +15,9 @@ import {
   watchForNavActions,
   initApp,
 } from '../sagas';
-import {BoardType} from '../../../game/module';
+import {ColoredBoard} from '../../../nonogram';
 
-const board: BoardType = [[]];
+const board: ColoredBoard = [[]];
 const validGame: Game = {
   id: 'test',
   title: 'title',

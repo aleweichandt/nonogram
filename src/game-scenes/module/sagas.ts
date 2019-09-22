@@ -17,10 +17,10 @@ export function* onChoosePack() {
 export function* onChooseGame() {
   const game: Game = yield select(getCurrentGame);
   if (game) {
-    const {board, options} = JSON.parse(game.boardData);
+    const {board, options, voidOption} = JSON.parse(game.boardData);
     if (board) {
       yield put(navigate({routeName: GAME}));
-      yield put(initGame(board, options));
+      yield put(initGame(board, options, voidOption));
     }
   }
 }

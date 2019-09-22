@@ -1,16 +1,16 @@
 import {createReducer} from '../../redux-helpers';
 import {SET_NAVIGATION} from './actions';
 import {SetNavigationAction} from './actions';
-import {StateType} from './types';
+import {State} from './types';
 
-export const initialState: StateType = {
+export const initialState: State = {
   dispatch: undefined,
 };
 
 const handleSetNavigation = (
-  state: StateType,
+  state: State,
   {payload: {dispatch}}: SetNavigationAction,
-): StateType => ({
+): State => ({
   ...state,
   dispatch,
 });
@@ -19,4 +19,4 @@ const handlers = Object.freeze({
   [SET_NAVIGATION]: handleSetNavigation,
 });
 
-export default createReducer<StateType>(handlers, initialState);
+export default createReducer<State>(handlers, initialState);

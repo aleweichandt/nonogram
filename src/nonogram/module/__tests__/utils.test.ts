@@ -1,30 +1,33 @@
+import {validateBoard, getLineInfo, isValid} from '../utils';
 import {
-  clearBoard,
-  validateBoard,
-  updateBoard,
-  getRow,
-  getCol,
-  getValue,
-  getLineInfo,
-} from '../index';
-import {
-  OPTION_BLACK as B,
   OPTION_VOID as V,
+  OPTION_BLOCKED as X,
+  OPTION_BLACK as B,
   OPTION_BLUE as C,
-} from '../../const';
-import {BoardType} from '../../types';
+} from '../const';
+import {ColoredBoard} from '../types';
 
-const testBoard: BoardType = [[V, B, V], [B, V, B], [B, B, B]];
-const emptyBoard: BoardType = [[V, V, V], [V, V, V], [V, V, V]];
-const fullBoard: BoardType = [[B, B, B], [B, B, B], [B, B, B]];
+const testBoard: ColoredBoard = [[V, B, V], [B, V, B], [B, B, B]];
+const emptyBoard: ColoredBoard = [[V, V, V], [V, V, V], [V, V, V]];
+const fullBoard: ColoredBoard = [[B, B, B], [B, B, B], [B, B, B]];
 
 describe('game utils test suite', () => {
-  describe('clean board', () => {
-    it('cleans up empty board', () => {
-      expect(clearBoard([[]])).toEqual([[]]);
+  describe('is valid', () => {
+    it('matching void with blocked', () => {
+      expect(isValid(V, X)).toEqual(true);
+      expect(isValid(X, V)).toEqual(true);
     });
-    it('cleans up board', () => {
-      expect(clearBoard(testBoard)).toEqual(emptyBoard);
+    it('matches exact', () => {
+      expect(isValid(V, V)).toEqual(true);
+      expect(isValid(B, B)).toEqual(true);
+      expect(isValid(C, C)).toEqual(true);
+      expect(isValid(B, B)).toEqual(true);
+    });
+    it('mismatches other', () => {
+      expect(isValid(V, C)).toEqual(false);
+      expect(isValid(B, V)).toEqual(false);
+      expect(isValid(B, C)).toEqual(false);
+      expect(isValid(B, X)).toEqual(false);
     });
   });
   describe('validate board', () => {
@@ -36,81 +39,6 @@ describe('game utils test suite', () => {
     });
     it('full board', () => {
       expect(validateBoard(testBoard, fullBoard)).toEqual(false);
-    });
-  });
-  describe('update board', () => {
-    it('update first', () => {
-      expect(updateBoard(emptyBoard, 0, 0, B)).toEqual([
-        [B, V, V],
-        [V, V, V],
-        [V, V, V],
-      ]);
-    });
-    it('update last', () => {
-      expect(updateBoard(emptyBoard, 2, 2, B)).toEqual([
-        [V, V, V],
-        [V, V, V],
-        [V, V, B],
-      ]);
-    });
-    it('update col', () => {
-      expect(updateBoard(emptyBoard, 0, 1, B)).toEqual([
-        [V, V, V],
-        [B, V, V],
-        [V, V, V],
-      ]);
-    });
-    it('update row', () => {
-      expect(updateBoard(emptyBoard, 1, 0, B)).toEqual([
-        [V, B, V],
-        [V, V, V],
-        [V, V, V],
-      ]);
-    });
-    it('update other option', () => {
-      expect(updateBoard(fullBoard, 0, 0, V)).toEqual([
-        [V, B, B],
-        [B, B, B],
-        [B, B, B],
-      ]);
-    });
-  });
-  describe('get row', () => {
-    it('get matching row', () => {
-      expect(getRow(testBoard, 0)).toEqual([V, B, V]);
-      expect(getRow(testBoard, 1)).toEqual([B, V, B]);
-      expect(getRow(testBoard, 2)).toEqual([B, B, B]);
-    });
-    it('returns empty on mismatch', () => {
-      expect(getRow(testBoard, -1)).toEqual([]);
-      expect(getRow(testBoard, 3)).toEqual([]);
-    });
-  });
-  describe('get col', () => {
-    it('get matching col', () => {
-      expect(getCol(testBoard, 0)).toEqual([V, B, B]);
-      expect(getCol(testBoard, 1)).toEqual([B, V, B]);
-      expect(getCol(testBoard, 2)).toEqual([V, B, B]);
-    });
-    it('returns empty on mismatch', () => {
-      expect(getCol(testBoard, -1)).toEqual([]);
-      expect(getCol(testBoard, 3)).toEqual([]);
-    });
-  });
-  describe('get value', () => {
-    it('get for valid row and col', () => {
-      expect(getValue(testBoard, 0, 0)).toEqual(V);
-      expect(getValue(testBoard, 0, 2)).toEqual(V);
-      expect(getValue(testBoard, 2, 0)).toEqual(B);
-    });
-    it('get invalid col', () => {
-      expect(getValue(testBoard, 0, -1)).toEqual(undefined);
-    });
-    it('get invalid row', () => {
-      expect(getValue(testBoard, -1, 0)).toEqual(undefined);
-    });
-    it('get both invalid', () => {
-      expect(getValue(testBoard, -1, -1)).toEqual(undefined);
     });
   });
   describe('get line info', () => {

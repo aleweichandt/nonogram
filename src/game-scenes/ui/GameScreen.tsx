@@ -1,13 +1,13 @@
 import React from 'react';
 import {Container, Content, Footer} from 'native-base';
-import {GameBoard, GameSelector} from '../../game';
+import {GameBoard, GameSelector} from '../../nonogram';
 
 type Props = {};
 
 const GameScreen: React.FC<Props> = () => (
   <Container>
     <Content>
-      <GameBoard board={[[]]} />
+      <GameBoard />
     </Content>
     <Footer>
       <GameSelector />

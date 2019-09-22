@@ -1,13 +1,9 @@
 import {connect} from 'react-redux';
 import {Board} from '../ui';
-import {getBoard, StateWithGameType} from '../module';
-import BoardLineInfo from './BoardLineInfo';
-import BoardTile from './BoardTile';
+import {getBoard, StateWithBoard} from '../module';
 
-const mapStateToProps = (state: StateWithGameType) => ({
+const mapStateToProps = (state: StateWithBoard<any>) => ({
   board: getBoard(state),
-  Tile: BoardTile,
-  LineInfo: BoardLineInfo,
 });
 
 export default connect(

@@ -1,8 +1,7 @@
 import React from 'react';
 import {Button} from 'native-base';
 import {connectStyle} from '../../theme';
-import UIOption from './Option';
-import {OPTION_VOID} from '../module';
+import Value from './Value';
 import {SelectorProps} from '../types';
 
 const styles = {
@@ -22,21 +21,21 @@ const styles = {
   },
 };
 
-type Props = SelectorProps & {
+type Props<T> = SelectorProps<T> & {
   selected: boolean;
   onPress: () => void;
-  Option: React.ComponentProps<typeof UIOption>;
+  Option: React.ComponentProps<typeof Value>;
 };
 
-const Tile: React.FC<Props> = ({value, selected, onPress, Option}) => (
+const Tile: React.FC<Props<any>> = ({value, selected, onPress, Option}) => (
   // @ts-ignore nativebase definition
   <Button selected={selected} onPress={onPress}>
     <Option>{value}</Option>
   </Button>
 );
 Tile.defaultProps = {
-  value: OPTION_VOID,
-  Option: UIOption,
+  value: undefined,
+  Option: Value,
   onPress: () => {},
   selected: false,
 };

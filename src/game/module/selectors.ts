@@ -1,54 +1,46 @@
-import {createSelector} from 'reselect';
-import {getCol, getRow, getLineInfo, getValue} from './utils';
-import {StateType, StateWithGameType, BoardType} from './types';
+import {createSelector, Selector} from 'reselect';
+import {getValue} from './utils';
+import {State, StateWithBoard, Board, Options} from './types';
 import {GridProps} from '../types';
 
-const gameSelector = ({game}: StateWithGameType): StateType => game;
-const propsSelector = (state: StateWithGameType, props: GridProps) => props;
+const gameSelector = <T>({board}: StateWithBoard<T>): State<T> => board;
+const propsSelector = (state: StateWithBoard<any>, props: GridProps) => props;
 
-export const getBoard = createSelector(
+export const getBoard: Selector<
+  StateWithBoard<any>,
+  Board<any>
+> = createSelector(
   gameSelector,
   ({board}) => board,
 );
 
-export const getCurrentOption = createSelector(
+export const getCurrentOption: Selector<
+  StateWithBoard<any>,
+  any
+> = createSelector(
   gameSelector,
   ({currentOption}) => currentOption,
 );
 
-export const getOptions = createSelector(
+export const getOptions: Selector<
+  StateWithBoard<any>,
+  Options<any>
+> = createSelector(
   gameSelector,
   ({options}) => options,
 );
 
-export const getProgress = createSelector(
+export const getProgress: Selector<
+  StateWithBoard<any>,
+  Board<any>
+> = createSelector(
   gameSelector,
   ({progress}) => progress,
 );
 
-export const createValueSelector = () =>
+export const createValueSelector = <T>() =>
   createSelector(
     [getProgress, propsSelector],
-    (progress: BoardType, {row = -1, column = -1}: GridProps) =>
+    (progress: Board<T>, {row = -1, column = -1}: GridProps) =>
       getValue(progress, row, column),
-  );
-
-export const createRowInfo = () =>
-  createSelector(
-    [getBoard, getProgress, propsSelector],
-    (board: BoardType, progress: BoardType, {row = -1}: GridProps) => {
-      const rowRef = getRow(board, row);
-      const rowProgress = getRow(progress, row);
-      return getLineInfo(rowRef, rowProgress);
-    },
-  );
-
-export const createColInfo = () =>
-  createSelector(
-    [getBoard, getProgress, propsSelector],
-    (board: BoardType, progress: BoardType, {column = -1}: GridProps) => {
-      const colRef = getCol(board, column);
-      const colProgress = getCol(progress, column);
-      return getLineInfo(colRef, colProgress);
-    },
   );

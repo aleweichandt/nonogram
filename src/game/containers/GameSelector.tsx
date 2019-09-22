@@ -1,11 +1,9 @@
 import {connect} from 'react-redux';
 import {Selector} from '../ui';
-import {getOptions, StateWithGameType} from '../module';
-import SelectorTile from './SelectorTile';
+import {getOptions, StateWithBoard} from '../module';
 
-const mapStateToProps = (state: StateWithGameType) => ({
+const mapStateToProps = (state: StateWithBoard<any>) => ({
   options: getOptions(state),
-  Tile: SelectorTile,
 });
 
 export default connect(

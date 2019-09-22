@@ -1,6 +1,5 @@
-import {DEFAULT_OPTIONS, OPTION_VOID, OPTION_BLACK} from './const';
 import {PayloadAction, Action} from '../../redux-helpers';
-import {OptionType} from './types';
+import {Board, Options} from './types';
 
 export const INIT_GAME = 'game/INIT_GAME';
 export const SET_OPTION = 'game/SET_OPTION';
@@ -8,57 +7,51 @@ export const SET_TILE = 'game/SET_TILE';
 export const CHECK_STATE = 'game/CHECK_STATE';
 export const END_GAME = 'game/END_GAME';
 
-export type InitGameAction = PayloadAction<
+export type InitGame<T> = PayloadAction<
   typeof INIT_GAME,
   {
-    board: OptionType[][];
-    currentOption: OptionType;
-    options: OptionType[];
+    board: Board<T>;
+    voidOption: T | void;
+    options: Options<T>;
   }
 >;
-export type SetOptionAction = PayloadAction<
+export type SetOption<T> = PayloadAction<
   typeof SET_OPTION,
   {
-    option: OptionType;
+    option: T;
   }
 >;
-export type SetTyleAction = PayloadAction<
+export type SetTile = PayloadAction<
   typeof SET_TILE,
   {
     row: number;
     col: number;
   }
 >;
-export type CheckStateAction = Action<typeof CHECK_STATE>;
-export type EndGameAction = Action<typeof END_GAME>;
-/**
- - init game
- - set_tile -> check_state -> set_state [-> end_game]
- */
+export type CheckState = Action<typeof CHECK_STATE>;
+export type EndGame = Action<typeof END_GAME>;
 
-export const initGame = (
-  board: OptionType[][] = [[]],
-  options: OptionType[] = DEFAULT_OPTIONS,
-  currentOption: OptionType = OPTION_BLACK,
-): InitGameAction => ({
+export const initGame = <T>(
+  board: Board<T> = [[]],
+  options: Options<T> = [],
+  voidOption?: T,
+): InitGame<T> => ({
   type: INIT_GAME,
   payload: {
     board,
-    currentOption,
+    voidOption,
     options,
   },
 });
 
-export const setOption = (
-  option: OptionType = OPTION_VOID,
-): SetOptionAction => ({
+export const setOption = <T>(option: T): SetOption<T> => ({
   type: SET_OPTION,
   payload: {
     option,
   },
 });
 
-export const setTile = (col: number = 0, row: number = 0): SetTyleAction => ({
+export const setTile = (col: number = 0, row: number = 0): SetTile => ({
   type: SET_TILE,
   payload: {
     row,
@@ -66,10 +59,10 @@ export const setTile = (col: number = 0, row: number = 0): SetTyleAction => ({
   },
 });
 
-export const checkState = (): CheckStateAction => ({
+export const checkState = (): CheckState => ({
   type: CHECK_STATE,
 });
 
-export const endGame = (): EndGameAction => ({
+export const endGame = (): EndGame => ({
   type: END_GAME,
 });

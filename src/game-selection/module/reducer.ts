@@ -6,9 +6,9 @@ import {
   StoreGamesAction,
   ChooseGameAction,
 } from './actions';
-import {StateType, Pack, Game} from './types';
+import {State, Pack, Game} from './types';
 
-export const initialState: StateType = {
+export const initialState: State = {
   currentPack: undefined,
   currentGame: undefined,
   packs: {},
@@ -20,9 +20,9 @@ function asMap<T extends IdType>(list: T[]): {[id: string]: T} {
 }
 
 const onStorePacks = (
-  state: StateType,
+  state: State,
   {payload: {packs}}: StorePacksAction,
-): StateType => ({
+): State => ({
   ...state,
   packs: {
     ...state.packs,
@@ -30,9 +30,9 @@ const onStorePacks = (
   },
 });
 const onChoosePack = (
-  state: StateType,
+  state: State,
   {payload: {packId}}: ChoosePackAction,
-): StateType =>
+): State =>
   Object.keys(state.packs).includes(packId)
     ? {
         ...state,
@@ -41,9 +41,9 @@ const onChoosePack = (
     : state;
 
 const onStoreGames = (
-  state: StateType,
+  state: State,
   {payload: {games}}: StoreGamesAction,
-): StateType => ({
+): State => ({
   ...state,
   games: {
     ...state.games,
@@ -51,9 +51,9 @@ const onStoreGames = (
   },
 });
 const onChooseGame = (
-  state: StateType,
+  state: State,
   {payload: {gameId}}: ChooseGameAction,
-): StateType =>
+): State =>
   Object.keys(state.games).includes(gameId)
     ? {
         ...state,
@@ -61,11 +61,11 @@ const onChooseGame = (
       }
     : state;
 
-const handlers: HandlerType<StateType> = {
+const handlers: HandlerType<State> = {
   [STORE_PACKS]: onStorePacks,
   [CHOOSE_PACK]: onChoosePack,
   [STORE_GAMES]: onStoreGames,
   [CHOOSE_GAME]: onChooseGame,
 };
 
-export default createReducer<StateType>(handlers, initialState);
+export default createReducer<State>(handlers, initialState);

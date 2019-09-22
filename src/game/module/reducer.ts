@@ -3,36 +3,35 @@ import {
   INIT_GAME,
   SET_OPTION,
   SET_TILE,
-  SetTyleAction,
-  SetOptionAction,
-  InitGameAction,
+  InitGame,
+  SetOption,
+  SetTile,
 } from './actions';
-import {DEFAULT_OPTIONS, OPTION_BLACK} from './const';
-import {clearBoard, updateBoard} from './utils';
-import {StateType} from './types';
+import {cleanBoard, updateBoard} from './utils';
+import {State} from './types';
 
-export const initialState: StateType = {
+export const initialState: State<any> = {
   board: [[]],
-  currentOption: OPTION_BLACK,
-  options: DEFAULT_OPTIONS,
+  currentOption: undefined,
+  options: [],
   progress: [[]],
 };
 
 const onInitGame = (
-  state: StateType,
-  {payload: {board, options, currentOption}}: InitGameAction,
-): StateType => ({
+  state: State<any>,
+  {payload: {board, options, voidOption}}: InitGame<any>,
+): State<any> => ({
   ...state,
   board,
-  currentOption,
+  currentOption: voidOption,
   options,
-  progress: clearBoard(board),
+  progress: cleanBoard<any>(board, voidOption),
 });
 
 const onSetOption = (
-  state: StateType,
-  {payload: {option}}: SetOptionAction,
-): StateType =>
+  state: State<any>,
+  {payload: {option}}: SetOption<any>,
+): State<any> =>
   state.options.includes(option)
     ? {
         ...state,
@@ -41,9 +40,9 @@ const onSetOption = (
     : state;
 
 const onSetTile = (
-  state: StateType,
-  {payload: {col, row}}: SetTyleAction,
-): StateType => ({
+  state: State<any>,
+  {payload: {col, row}}: SetTile,
+): State<any> => ({
   ...state,
   progress: updateBoard(state.progress, col, row, state.currentOption),
 });
@@ -54,4 +53,4 @@ const handlers = Object.freeze({
   [SET_OPTION]: onSetOption,
 });
 
-export default createReducer<StateType>(handlers, initialState);
+export default createReducer<State<any>>(handlers, initialState);

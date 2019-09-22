@@ -1,8 +1,8 @@
-import game from './reducer';
+import board from './reducer';
 
-export * from './const';
 export * from './types';
 export * from './actions';
 export * from './selectors';
-export const reducer = {game};
+export * from './utils';
+export const reducer = {board};
 export {default as sagas} from './sagas';

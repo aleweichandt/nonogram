@@ -1,12 +1,15 @@
 import reducer, {initialState} from '../reducer';
 import {initGame, setOption, setTile} from '../actions';
-import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
-import {BoardType, OptionsType, StateType} from '../types';
+import {Board, Options, State} from '../types';
+
+const B = 'B';
+const V = 'V';
+type Option = typeof B | typeof V;
 
 describe('game reducer test suite', () => {
-  const testBoard: BoardType = [[B, V], [V, B]];
-  const cleanProgress: BoardType = [[V, V], [V, V]];
-  const testOptions: OptionsType = [B, V];
+  const testBoard: Board<Option> = [[B, V], [V, B]];
+  const cleanProgress: Board<Option> = [[V, V], [V, V]];
+  const testOptions: Options<Option> = [V, B];
   it('starts with state', () => {
     // @ts-ignore intended
     expect(reducer(undefined, {})).toEqual(initialState);
@@ -24,7 +27,7 @@ describe('game reducer test suite', () => {
   describe('set option', () => {
     it('valid option', () => {
       const action = setOption(B);
-      const state: StateType = {
+      const state: State<Option> = {
         ...initialState,
         currentOption: V,
         options: [V, B],
@@ -36,7 +39,7 @@ describe('game reducer test suite', () => {
     });
     it('invalid option', () => {
       const action = setOption(B);
-      const state: StateType = {
+      const state: State<Option> = {
         ...initialState,
         currentOption: V,
         options: [V],
@@ -50,7 +53,7 @@ describe('game reducer test suite', () => {
       expect(reducer(initialState, action)).toEqual(initialState);
     });
     it('with board and same option', () => {
-      const state: StateType = {
+      const state: State<Option> = {
         ...initialState,
         board: testBoard,
         currentOption: V,
@@ -59,7 +62,7 @@ describe('game reducer test suite', () => {
       expect(reducer(state, action)).toEqual(state);
     });
     it('with board and diff option', () => {
-      const state: StateType = {
+      const state: State<Option> = {
         ...initialState,
         board: testBoard,
         currentOption: B,
