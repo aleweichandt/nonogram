@@ -1,5 +1,5 @@
 import {OPTION_BLACK, OPTION_BLUE, OPTION_BLOCKED, OPTION_VOID} from './const';
-import {Board, Options} from '../../game';
+import {Board, Options} from '../../board';
 
 export type ColoredOption =
   | typeof OPTION_BLACK

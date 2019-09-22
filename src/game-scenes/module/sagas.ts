@@ -6,7 +6,7 @@ import {
   loadPacks,
   Game,
 } from '../../game-selection';
-import {initGame} from '../../game';
+import {initBoard} from '../../board';
 import {navigate} from '../../navigation';
 import {GAME_SELECTION, GAME} from '../../routes';
 
@@ -20,7 +20,7 @@ export function* onChooseGame() {
     const {board, options, voidOption} = JSON.parse(game.boardData);
     if (board) {
       yield put(navigate({routeName: GAME}));
-      yield put(initGame(board, options, voidOption));
+      yield put(initBoard(board, options, voidOption));
     }
   }
 }

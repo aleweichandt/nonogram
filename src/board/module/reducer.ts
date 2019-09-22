@@ -1,9 +1,9 @@
 import {createReducer} from '../../redux-helpers';
 import {
-  INIT_GAME,
+  INIT_BOARD,
   SET_OPTION,
   SET_TILE,
-  InitGame,
+  InitBoard,
   SetOption,
   SetTile,
 } from './actions';
@@ -17,9 +17,9 @@ export const initialState: State<any> = {
   progress: [[]],
 };
 
-const onInitGame = (
+const onInitBoard = (
   state: State<any>,
-  {payload: {board, options, voidOption}}: InitGame<any>,
+  {payload: {board, options, voidOption}}: InitBoard<any>,
 ): State<any> => ({
   ...state,
   board,
@@ -48,7 +48,7 @@ const onSetTile = (
 });
 
 const handlers = Object.freeze({
-  [INIT_GAME]: onInitGame,
+  [INIT_BOARD]: onInitBoard,
   [SET_TILE]: onSetTile,
   [SET_OPTION]: onSetOption,
 });

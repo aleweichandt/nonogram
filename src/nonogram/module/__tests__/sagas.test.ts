@@ -1,5 +1,5 @@
 import {takeEvery, put, select, call} from 'redux-saga/effects';
-import {CHECK_STATE, endGame, getBoard, getProgress} from '../../../game';
+import {CHECK_STATE, endGame, getBoard, getProgress} from '../../../board';
 import {validateBoard} from '../utils';
 import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
 import {onCheckState, watchActions} from '../sagas';

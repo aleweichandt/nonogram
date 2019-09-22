@@ -1,5 +1,5 @@
 import React from 'react';
-import {GameSelector} from '../../game';
+import {GameSelector} from '../../board';
 import SelectorTile from './SelectorTile';
 
 const ColorSelector: React.FC<{}> = props => (

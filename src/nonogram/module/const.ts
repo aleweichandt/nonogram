@@ -1,4 +1,4 @@
-import {Options} from '../../game';
+import {Options} from '../../board';
 
 // Options
 export const OPTION_VOID = 'game/OPTION_VOID';

@@ -1,5 +1,5 @@
 import reducer, {initialState} from '../reducer';
-import {initGame, setOption, setTile} from '../actions';
+import {initBoard, setOption, setTile} from '../actions';
 import {Board, Options, State} from '../types';
 
 const B = 'B';
@@ -15,7 +15,7 @@ describe('game reducer test suite', () => {
     expect(reducer(undefined, {})).toEqual(initialState);
   });
   it('initialise game', () => {
-    const action = initGame(testBoard, testOptions, V);
+    const action = initBoard(testBoard, testOptions, V);
     expect(reducer(initialState, action)).toEqual({
       ...initialState,
       board: testBoard,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BoardTile} from '../../game';
+import {BoardTile} from '../../board';
 import {Value} from '../ui';
 
 const ColoredBoardTile: React.FC<{}> = props => (

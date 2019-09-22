@@ -2,7 +2,7 @@ import {all, fork} from 'redux-saga/effects';
 
 import {sagas as navigationSagas} from '../navigation';
 import {sagas as gameScenesSagas} from '../game-scenes';
-import {sagas as boardSagas} from '../game';
+import {sagas as boardSagas} from '../board';
 import {sagas as gameSagas} from '../nonogram';
 import {sagas as gameSelectionSagas} from '../game-selection';
 

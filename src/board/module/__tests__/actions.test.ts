@@ -1,4 +1,4 @@
-import {initGame, setOption, setTile, checkState, endGame} from '../actions';
+import {initBoard, setOption, setTile, checkState, endGame} from '../actions';
 import {Board, Options} from '../types';
 
 const B = 'B';
@@ -11,10 +11,10 @@ describe('game actions test suite', () => {
 
   describe('init game', () => {
     it('default params', () => {
-      expect(initGame()).toMatchSnapshot();
+      expect(initBoard()).toMatchSnapshot();
     });
     it('with params', () => {
-      expect(initGame(testBoard, testOptions, V)).toMatchSnapshot();
+      expect(initBoard(testBoard, testOptions, V)).toMatchSnapshot();
     });
   });
   describe('set option', () => {

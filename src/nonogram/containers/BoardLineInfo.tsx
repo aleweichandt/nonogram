@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {StateWithBoard, GridProps} from '../../game';
+import {StateWithBoard, GridProps} from '../../board';
 import {createColInfo, createRowInfo, ColoredOption} from '../module';
 import {Info} from '../ui';
 

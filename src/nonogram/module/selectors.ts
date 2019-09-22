@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {getBoard, getProgress, getRow, getCol, GridProps} from '../../game';
+import {getBoard, getProgress, getRow, getCol, GridProps} from '../../board';
 import {getLineInfo} from './utils';
 import {ColoredBoard} from './types';
 

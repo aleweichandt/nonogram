@@ -2,13 +2,13 @@
 
 exports[`game actions test suite check state 1`] = `
 Object {
-  "type": "game/CHECK_STATE",
+  "type": "board/CHECK_STATE",
 }
 `;
 
 exports[`game actions test suite end game 1`] = `
 Object {
-  "type": "game/END_GAME",
+  "type": "board/END_GAME",
 }
 `;
 
@@ -21,7 +21,7 @@ Object {
     "options": Array [],
     "voidOption": undefined,
   },
-  "type": "game/INIT_GAME",
+  "type": "board/INIT_BOARD",
 }
 `;
 
@@ -44,7 +44,7 @@ Object {
     ],
     "voidOption": "V",
   },
-  "type": "game/INIT_GAME",
+  "type": "board/INIT_BOARD",
 }
 `;
 
@@ -53,7 +53,7 @@ Object {
   "payload": Object {
     "option": "B",
   },
-  "type": "game/SET_OPTION",
+  "type": "board/SET_OPTION",
 }
 `;
 
@@ -63,7 +63,7 @@ Object {
     "col": 0,
     "row": 0,
   },
-  "type": "game/SET_TILE",
+  "type": "board/SET_TILE",
 }
 `;
 
@@ -73,6 +73,6 @@ Object {
     "col": 1,
     "row": 1,
   },
-  "type": "game/SET_TILE",
+  "type": "board/SET_TILE",
 }
 `;

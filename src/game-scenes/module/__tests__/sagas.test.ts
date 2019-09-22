@@ -6,7 +6,7 @@ import {
   loadPacks,
   Game,
 } from '../../../game-selection';
-import {initGame} from '../../../game';
+import {initBoard} from '../../../board';
 import {navigate} from '../../../navigation';
 import {GAME_SELECTION, GAME} from '../../../routes';
 import {
@@ -40,7 +40,7 @@ describe('game scenes sagas', () => {
       expect(gen.next(validGame).value).toEqual(
         put(navigate({routeName: GAME})),
       );
-      expect(gen.next().value).toEqual(put(initGame(board)));
+      expect(gen.next().value).toEqual(put(initBoard(board)));
       expect(gen.next().done).toEqual(true);
     });
     it('with missing game', () => {

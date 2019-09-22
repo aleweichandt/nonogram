@@ -1,5 +1,5 @@
 import React from 'react';
-import {GameBoard as Board} from '../../game';
+import {GameBoard as Board} from '../../board';
 import BoardTile from './BoardTile';
 import BoardLineInfo from './BoardLineInfo';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'native-base';
-import {GridProps} from '../../game';
+import {GridProps} from '../../board';
 import {connectStyle} from '../../theme';
 import {LineInfoType, InfoType} from '../module';
 

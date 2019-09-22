@@ -1,14 +1,14 @@
 import {PayloadAction, Action} from '../../redux-helpers';
 import {Board, Options} from './types';
 
-export const INIT_GAME = 'game/INIT_GAME';
-export const SET_OPTION = 'game/SET_OPTION';
-export const SET_TILE = 'game/SET_TILE';
-export const CHECK_STATE = 'game/CHECK_STATE';
-export const END_GAME = 'game/END_GAME';
+export const INIT_BOARD = 'board/INIT_BOARD';
+export const SET_OPTION = 'board/SET_OPTION';
+export const SET_TILE = 'board/SET_TILE';
+export const CHECK_STATE = 'board/CHECK_STATE';
+export const END_GAME = 'board/END_GAME';
 
-export type InitGame<T> = PayloadAction<
-  typeof INIT_GAME,
+export type InitBoard<T> = PayloadAction<
+  typeof INIT_BOARD,
   {
     board: Board<T>;
     voidOption: T | void;
@@ -31,12 +31,12 @@ export type SetTile = PayloadAction<
 export type CheckState = Action<typeof CHECK_STATE>;
 export type EndGame = Action<typeof END_GAME>;
 
-export const initGame = <T>(
+export const initBoard = <T>(
   board: Board<T> = [[]],
   options: Options<T> = [],
   voidOption?: T,
-): InitGame<T> => ({
-  type: INIT_GAME,
+): InitBoard<T> => ({
+  type: INIT_BOARD,
   payload: {
     board,
     voidOption,

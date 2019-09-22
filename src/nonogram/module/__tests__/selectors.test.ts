@@ -1,4 +1,4 @@
-import {State} from '../../../game';
+import {State} from '../../../board';
 import {createColInfo, createRowInfo} from '../selectors';
 import {OPTION_BLACK as B, OPTION_VOID as V} from '../const';
 import {ColoredOption} from '../types';
