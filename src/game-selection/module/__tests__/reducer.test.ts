@@ -26,8 +26,7 @@ const filledState = {
 
 describe('game selection reducer test suite', () => {
   it('starts with state', () => {
-    // @ts-ignore intended
-    expect(reducer(undefined, {})).toEqual(initialState);
+    expect(reducer(undefined, {type: '@init'})).toEqual(initialState);
   });
   describe('store packs', () => {
     it('empty', () => {

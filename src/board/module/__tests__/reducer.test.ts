@@ -11,8 +11,7 @@ describe('game reducer test suite', () => {
   const cleanProgress: Board<Option> = [[V, V], [V, V]];
   const testOptions: Options<Option> = [V, B];
   it('starts with state', () => {
-    // @ts-ignore intended
-    expect(reducer(undefined, {})).toEqual(initialState);
+    expect(reducer(undefined, {type: '@init'})).toEqual(initialState);
   });
   it('initialise game', () => {
     const action = initBoard(testBoard, testOptions, V);

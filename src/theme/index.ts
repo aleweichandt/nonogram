@@ -1,5 +1,3 @@
-export { 
-  // @ts-ignore
-  connectStyle,
-} from 'native-base';
+// @ts-ignore
+export {connectStyle} from 'native-base';
 export * from './containers';
