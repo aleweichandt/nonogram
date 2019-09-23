@@ -1,11 +1,11 @@
 import {connect, MapStateToProps} from 'react-redux';
 import {StateWithBoard} from '../../board';
-import {createColInfo, createRowInfo, ColoredOption, InfoType} from '../module';
+import {createColInfo, createRowInfo, ColoredOption, LineInfo} from '../module';
 import {Info} from '../ui';
 
 type Props = React.ComponentProps<typeof Info>;
 type SProps = {
-  info: InfoType[][];
+  info: LineInfo;
 };
 
 const getRowInfo = createRowInfo();

@@ -9,12 +9,12 @@ export type ColoredOption =
 
 export type ColoredOptions = Options<ColoredOption>;
 
-export type InfoType = {
+export type Info = {
   option: ColoredOption;
   count: number;
   complete: boolean;
 };
-export type LineInfoType = InfoType[];
+export type LineInfo = Info[];
 
-export type LineType = ColoredOption[];
+export type Line = ColoredOption[];
 export type ColoredBoard = Board<ColoredOption>;

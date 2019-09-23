@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import {getBoard, getProgress, getRow, getCol, GridProps} from '../../board';
-import {getLineInfo} from './utils';
+import {getLineProgress} from './utils';
 import {ColoredBoard} from './types';
 
 const propsSelector = (state: any, props: GridProps) => props;
@@ -11,7 +11,7 @@ export const createRowInfo = () =>
     (board: ColoredBoard, progress: ColoredBoard, {row = -1}: GridProps) => {
       const rowRef = getRow(board, row);
       const rowProgress = getRow(progress, row);
-      return getLineInfo(rowRef, rowProgress);
+      return getLineProgress(rowRef, rowProgress);
     },
   );
 
@@ -21,6 +21,6 @@ export const createColInfo = () =>
     (board: ColoredBoard, progress: ColoredBoard, {column = -1}: GridProps) => {
       const colRef = getCol(board, column);
       const colProgress = getCol(progress, column);
-      return getLineInfo(colRef, colProgress);
+      return getLineProgress(colRef, colProgress);
     },
   );

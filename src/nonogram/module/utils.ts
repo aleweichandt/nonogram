@@ -1,8 +1,8 @@
 import {OPTION_VOID, OPTION_BLOCKED} from './const';
 import {
-  LineType,
-  LineInfoType,
-  InfoType,
+  Line,
+  LineInfo,
+  Info,
   ColoredOptions,
   ColoredOption,
   ColoredBoard,
@@ -28,14 +28,35 @@ export const validateBoard = (
   board.every((row, y) => row.every((val, x) => isValid(val, values[y][x])));
 
 type CountType = {
-  result: LineInfoType[];
-  last: InfoType;
+  result: LineInfo;
+  last: Info;
 };
 
-export const getLineInfo = (
-  line: LineType,
-  progress: LineType = [],
-): LineInfoType[] =>
+export const getLineInfo = (line: Line): LineInfo => {
+  const {result: info}: CountType = [...line, OPTION_VOID].reduce<CountType>(
+    // @ts-ignore bad reduce definition
+    ({result, last}: CountType, next: OptionType) => {
+      const {option, count} = last;
+      if (next === option) {
+        return {
+          result,
+          last: {option, count: count + 1},
+        };
+      }
+      return {
+        result: shouldShowInfo(option) ? [...result, last] : result,
+        last: {option: next, count: 1},
+      };
+    },
+    {
+      result: [],
+      last: {option: OPTION_VOID, count: 1},
+    },
+  );
+  return info;
+};
+
+export const getLineProgress = (line: Line, progress: Line = []): LineInfo =>
   [...line, OPTION_VOID].reduce<CountType>(
     // @ts-ignore bad reduce definition
     ({result, last}: CountType, next: OptionType, i: number) => {
