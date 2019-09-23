@@ -1,15 +1,27 @@
-import {Dispatch} from 'react';
-import {connect} from 'react-redux';
+import {connect, MapStateToProps, MapDispatchToProps} from 'react-redux';
 import {SelectionList} from '../ui';
 import StorePack from './StorePack';
 import {getPacks, choosePack} from '../module';
-import {StateWithGameSelectionType, PackId} from '../module';
+import {StateWithGameSelection, PackId} from '../module';
 
-const mapStateToProps = (state: StateWithGameSelectionType) => ({
+type Props = {};
+type SProps = {
+  data: string[];
+  ItemView: typeof StorePack;
+};
+type DProps = {
+  onItemSelected: (id: string) => void;
+};
+
+const mapStateToProps: MapStateToProps<
+  SProps,
+  Props,
+  StateWithGameSelection
+> = state => ({
   data: Object.keys(getPacks(state)),
   ItemView: StorePack,
 });
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+const mapDispatchToProps: MapDispatchToProps<DProps, Props> = dispatch => ({
   onItemSelected: (id: PackId) => dispatch(choosePack(id)),
 });
 

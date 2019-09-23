@@ -1,18 +1,24 @@
-import {Dispatch} from 'react';
-import {connect} from 'react-redux';
+import {connect, MapStateToProps, MapDispatchToProps} from 'react-redux';
 import {Tile} from '../ui';
 import {setOption, getCurrentOption, StateWithBoard} from '../module';
-import {SelectorProps} from '../types';
 
-const mapStateToProps = (
-  state: StateWithBoard<any>,
-  {value}: SelectorProps<any>,
+type Props = React.ComponentProps<typeof Tile>;
+type SProps = {
+  selected: boolean;
+};
+type DProps = {
+  onPress: () => void;
+};
+
+const mapStateToProps: MapStateToProps<SProps, Props, StateWithBoard<any>> = (
+  state,
+  {value},
 ) => ({
   selected: getCurrentOption(state) === value,
 });
-const mapDispatchToProps = (
-  dispatch: Dispatch<any>,
-  {value}: SelectorProps<any>,
+const mapDispatchToProps: MapDispatchToProps<DProps, Props> = (
+  dispatch,
+  {value},
 ) => ({
   onPress: () => dispatch(setOption(value)),
 });

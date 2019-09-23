@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {State, StateWithGameSelectionType, GameId, PackId} from './types';
+import {State, StateWithGameSelection, GameId, PackId} from './types';
 
 type GameContainerProps = {
   id: GameId;
@@ -10,15 +10,15 @@ type PackContainerProps = {
 
 const gameSelectionSelector = ({
   gameSelection,
-}: StateWithGameSelectionType): State => gameSelection;
+}: StateWithGameSelection): State => gameSelection;
 
 const packPropsSelector = (
-  state: StateWithGameSelectionType,
+  state: StateWithGameSelection,
   props: PackContainerProps,
 ): PackContainerProps => props;
 
 const gamePropsSelector = (
-  state: StateWithGameSelectionType,
+  state: StateWithGameSelection,
   props: GameContainerProps,
 ): GameContainerProps => props;
 

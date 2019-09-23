@@ -1,17 +1,27 @@
-import {Dispatch} from 'react';
-import {connect} from 'react-redux';
+import {connect, MapStateToProps, MapDispatchToProps} from 'react-redux';
 import {Tile} from '../ui';
 import {setTile, createValueSelector, StateWithBoard} from '../module';
 import {GridProps} from '../types';
 
+type Props = GridProps & React.ComponentProps<typeof Tile>;
+type SProps = {
+  value: any;
+};
+type DProps = {
+  onPress: () => void;
+};
+
 const getValue = createValueSelector();
 
-const mapStateToProps = (state: StateWithBoard<any>, props: GridProps) => ({
+const mapStateToProps: MapStateToProps<SProps, Props, StateWithBoard<any>> = (
+  state,
+  props,
+) => ({
   value: getValue(state, props),
 });
-const mapDispatchToProps = (
-  dispatch: Dispatch<any>,
-  {column, row}: GridProps,
+const mapDispatchToProps: MapDispatchToProps<DProps, Props> = (
+  dispatch,
+  {column, row},
 ) => ({
   onPress: () => dispatch(setTile(column, row)),
 });

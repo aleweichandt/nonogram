@@ -1,8 +1,17 @@
-import {connect} from 'react-redux';
+import {connect, MapStateToProps} from 'react-redux';
 import {Board} from '../ui';
-import {getBoard, StateWithBoard} from '../module';
+import {getBoard, StateWithBoard, Board as BoardType} from '../module';
 
-const mapStateToProps = (state: StateWithBoard<any>) => ({
+type Props = React.ComponentProps<typeof Board>;
+type SProps = {
+  board: BoardType<any>;
+};
+
+const mapStateToProps: MapStateToProps<
+  SProps,
+  Props,
+  StateWithBoard<any>
+> = state => ({
   board: getBoard(state),
 });
 

@@ -1,11 +1,16 @@
-import {connect} from 'react-redux';
+import {connect, MapStateToProps} from 'react-redux';
 import {GameItem} from '../ui';
-import {getGame} from '../module';
-import {GameId, StateWithGameSelectionType} from '../module';
+import {getGame, Game} from '../module';
+import {GameId, StateWithGameSelection} from '../module';
 
 type Props = {id: GameId};
+type SProps = Partial<Game>;
 
-const mapStateToProps = (state: StateWithGameSelectionType, props: Props) => ({
+const mapStateToProps: MapStateToProps<
+  SProps,
+  Props,
+  StateWithGameSelection
+> = (state, props) => ({
   ...(getGame(state, props) || {}),
 });
 

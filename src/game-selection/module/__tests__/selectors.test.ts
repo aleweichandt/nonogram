@@ -6,7 +6,7 @@ import {
   getPack,
   getGame,
 } from '../selectors';
-import {StateWithGameSelectionType} from '../types';
+import {StateWithGameSelection} from '../types';
 
 const testGame = {
   id: 'gameId',
@@ -25,7 +25,7 @@ const testPack = {
 const packs = {packId: testPack};
 const games = {gameId: testGame};
 
-const mockState = (props: {} = {}): StateWithGameSelectionType => ({
+const mockState = (props: {} = {}): StateWithGameSelection => ({
   gameSelection: {
     currentPack: 'packId',
     currentGame: 'gameId',

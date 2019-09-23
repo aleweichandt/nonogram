@@ -1,8 +1,17 @@
-import {connect} from 'react-redux';
+import {connect, MapStateToProps} from 'react-redux';
 import {Selector} from '../ui';
-import {getOptions, StateWithBoard} from '../module';
+import {getOptions, StateWithBoard, Options} from '../module';
 
-const mapStateToProps = (state: StateWithBoard<any>) => ({
+type Props = React.ComponentProps<typeof Selector>;
+type SProps = {
+  options: Options<any>;
+};
+
+const mapStateToProps: MapStateToProps<
+  SProps,
+  Props,
+  StateWithBoard<any>
+> = state => ({
   options: getOptions(state),
 });
 

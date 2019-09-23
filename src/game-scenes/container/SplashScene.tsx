@@ -1,11 +1,15 @@
-import {Dispatch} from 'react';
-import {connect} from 'react-redux';
+import {connect, MapDispatchToProps} from 'react-redux';
 
 import {PACK_SELECTION} from '../../routes/module';
 import {navigate} from '../../navigation';
 import {SplashScreen} from '../ui';
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+type Props = {};
+type DProps = {
+  next: () => void;
+};
+
+const mapDispatchToProps: MapDispatchToProps<DProps, Props> = dispatch => ({
   next: () => dispatch(navigate({routeName: PACK_SELECTION})),
 });
 

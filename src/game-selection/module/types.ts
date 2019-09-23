@@ -23,6 +23,6 @@ export type State = {
   games: {[GameId: string]: Game | undefined};
 };
 
-export type StateWithGameSelectionType = {
+export type StateWithGameSelection = {
   gameSelection: State;
 };
