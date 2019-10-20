@@ -6,8 +6,3 @@ import mocks from 'react-native-jest-mocks';
 
 mocks.initAll();
 // Enzyme.configure({ adapter: new Adapter() });
-
-jest.mock('redux-logger', () => ({
-  createLogger: () => (store: Store) => (next: any) => (action: any) =>
-    next(action),
-}));
