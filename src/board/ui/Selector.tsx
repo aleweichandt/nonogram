@@ -6,7 +6,7 @@ import {Options} from '../module';
 
 type Props = {
   options: Options<any>;
-  Tile: React.ComponentProps<typeof UITile>;
+  Tile: typeof UITile;
 };
 
 const styles = {

@@ -7,15 +7,11 @@ import {GridProps} from '../types';
 
 type Props<T> = {
   board: Board<T>;
-  Tile?: React.ComponentType<GridProps>;
-  LineInfo?: React.ComponentType<GridProps>;
+  Tile: React.ComponentType<GridProps & {value: T}>;
+  LineInfo: React.ComponentType<GridProps>;
 };
 
-const BoardComponent: React.FC<Props<any>> = ({
-  board,
-  Tile = UITile,
-  LineInfo = Info,
-}) => (
+const BoardComponent: React.FC<Props<any>> = ({board, Tile, LineInfo}) => (
   <Grid>
     <Col>
       <Row>
