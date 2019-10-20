@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import {SPLASH, GAME, PACK_SELECTION, GAME_SELECTION} from '../../routes';
 import {
   GameScene,
