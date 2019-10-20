@@ -24,7 +24,7 @@ const styles = {
 type Props<T> = SelectorProps<T> & {
   selected: boolean;
   onPress: () => void;
-  Option: React.ComponentProps<typeof Value>;
+  Option: typeof Value;
 };
 
 const Tile: React.FC<Props<any>> = ({value, selected, onPress, Option}) => (
