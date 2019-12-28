@@ -1,6 +1,6 @@
 {
-  "eslint.autoFixOnSave": true,
-  "editor.formatOnSave": true,
+  // "eslint.autoFixOnSave": true,
+  // "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "eslint.validate": [
     "javascript",
@@ -22,5 +22,8 @@
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }

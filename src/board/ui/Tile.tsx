@@ -1,43 +1,34 @@
 import React from 'react';
-import {Button} from 'native-base';
-import {connectStyle} from '../../theme';
+import styled from 'styled-components/native';
 import Value from './Value';
 import {SelectorProps} from '../types';
 
-const styles = {
-  'NativeBase.Button': {
-    width: 50,
-    height: 50,
-    padding: 0,
-    margin: 0,
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: 'lightgrey',
-    backgroundColor: 'white',
-    '.selected': {
-      borderWidth: 4,
-      borderColor: 'black',
-    },
-  },
-};
+const Button = styled.TouchableOpacity<{selected: boolean}>`
+  width: 50;
+  height: 50;
+  padding: 0;
+  margin: 0;
+  border-width: ${props => (props.selected ? 4 : 2)};
+  border-radius: 5;
+  border-color: ${props => (props.selected ? '#000' : '#d3d3d3')};
+  background-color: #fff;
+`;
 
 type Props<T> = SelectorProps<T> & {
-  selected: boolean;
-  onPress: () => void;
-  Option: typeof Value;
+  selected?: boolean;
+  onPress?: () => void;
+  Option?: React.ComponentType<any>;
 };
 
-const Tile: React.FC<Props<any>> = ({value, selected, onPress, Option}) => (
-  // @ts-ignore nativebase definition
+const Tile: React.FC<Props<any>> = ({
+  value,
+  selected = false,
+  onPress = () => {},
+  Option = Value,
+}) => (
   <Button selected={selected} onPress={onPress}>
     <Option>{value}</Option>
   </Button>
 );
-Tile.defaultProps = {
-  value: undefined,
-  Option: Value,
-  onPress: () => {},
-  selected: false,
-};
 
-export default connectStyle('Game.Tile', styles)(Tile);
+export default Tile;

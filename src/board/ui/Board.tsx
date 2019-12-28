@@ -1,17 +1,29 @@
 import React from 'react';
-import {Grid, Col, Row} from 'native-base';
+import styled from 'styled-components/native';
 import Info from './Info';
 import UITile from './Tile';
 import {Board, Options} from '../module';
-import {GridProps} from '../types';
+import {GridProps, SelectorProps} from '../types';
+
+const Grid = styled.View``;
+const Col = styled.View`
+  flex-direction: column;
+`;
+const Row = styled.View`
+  flex-direction: row;
+`;
 
 type Props<T> = {
   board: Board<T>;
-  Tile: React.ComponentType<GridProps & {value: T}>;
-  LineInfo: React.ComponentType<GridProps>;
+  Tile?: React.ComponentType<GridProps & SelectorProps<T>>;
+  LineInfo?: React.ComponentType<GridProps>;
 };
 
-const BoardComponent: React.FC<Props<any>> = ({board, Tile, LineInfo}) => (
+const BoardComponent: React.FC<Props<any>> = ({
+  board,
+  Tile = UITile,
+  LineInfo = Info,
+}) => (
   <Grid>
     <Col>
       <Row>
@@ -31,9 +43,5 @@ const BoardComponent: React.FC<Props<any>> = ({board, Tile, LineInfo}) => (
     </Col>
   </Grid>
 );
-BoardComponent.defaultProps = {
-  Tile: UITile,
-  LineInfo: Info,
-};
 
 export default BoardComponent;

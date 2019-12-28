@@ -1,33 +1,26 @@
 import React from 'react';
-import {View, Text} from 'native-base';
-import {connectStyle} from '../../theme';
+import styled from 'styled-components/native';
 import {OPTION_BLACK, OPTION_BLOCKED, ColoredOption} from '../module';
+
+const View = styled.View<{black: boolean}>`
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => (props.black ? '#a9a9a9' : '#fff')};
+`;
+const Text = styled.Text`
+  text-align: center;
+`;
 
 type Props = {
   children: ColoredOption;
 };
 
-const styles = {
-  'NativeBase.ViewNB': {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    '.black': {
-      backgroundColor: 'darkgrey',
-    },
-    'NativeBase.Text': {
-      textAlign: 'center',
-    },
-  },
-};
-
 const Value: React.FC<Props> = ({children}) => (
-  // @ts-ignore nativebase definition
   <View black={OPTION_BLACK === children}>
     {OPTION_BLOCKED === children ? <Text>X</Text> : null}
   </View>
 );
 
-export default connectStyle('Game.Value', styles)(Value);
+export default Value;
